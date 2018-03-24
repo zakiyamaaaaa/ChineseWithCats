@@ -18,8 +18,15 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
     @IBOutlet weak var myTableView: UITableView!
     var words = Vocabrary()
     
-    
     @IBOutlet weak var wordSegment: UISegmentedControl!
+    
+    var unClearVocabrary:Results<WordObj>?
+    var clearVocabrary:Results<WordObj>?
+    var vocabrary:Results<WordObj>?
+    var wordQueue:Results<WordObj>?
+    var sectionSegmentNumber = 0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,11 +37,7 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
         // Do any additional setup after loading the view.
     }
     
-    var unClearVocabrary:Results<WordObj>?
-    var clearVocabrary:Results<WordObj>?
-    var vocabrary:Results<WordObj>?
-    var wordQueue:Results<WordObj>?
-    var sectionSegmentNumber = 0
+    
     
     override func viewWillAppear(_ animated: Bool) {
         let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
@@ -66,29 +69,16 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
         switch wordSegment.selectedSegmentIndex {
         case 0:
             
-            if let vocabrary = vocabrary{
-                return vocabrary.count
-            }
-            
-            return 0
+            return vocabrary?.count ?? 0
         case 1:
-            if let unclear = unClearVocabrary{
-                return unclear.count
-            }
             
-            return 0
+            return unClearVocabrary?.count ?? 0
         case 2:
-            if let clear = clearVocabrary{
-                return clear.count
-            }
             
-            
-            return 0
+            return clearVocabrary?.count ?? 0
         default:
             return 0
         }
-        
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -98,6 +88,7 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
             cell.pinyinLabel.text = words[indexPath.row].pinyin
             cell.voiceButton.addTarget(self, action: #selector(self.speechWord(sender:)), for: .touchUpInside)
             cell.voiceButton.tag = indexPath.row
+            cell.sentenceLabel.text = words[indexPath.row].sentense
             
             if words[indexPath.row].clearCount == 0 && words[indexPath.row].wrongCount == 0{
                 cell.correctRatioLabel.text = ""
@@ -106,45 +97,21 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
                 cell.correctRatioLabel.text = "正答率" + String(ratio) + "%"
             }
             
-            let imageViewList = [cell.imageView1,cell.imageView2,cell.imageView3,cell.imageView4,cell.imageView5]
-            //初期化
-            imageViewList.forEach({ (imageView) in
-                imageView?.image = #imageLiteral(resourceName: "cat_icon")
-            })
+            let quizType1 = QuizType(rawValue: 0)!
+            let quizType2 = QuizType(rawValue: 1)!
+            let quizType3 = QuizType(rawValue: 2)!
+            let quizType4 = QuizType(rawValue: 3)!
+            let quizType5 = QuizType(rawValue: 4)!
             
+            cell.imageView1.image = words[indexPath.row].level1Result ? quizType1.iconImage : quizType1.defultIconImage
             
-            if words[indexPath.row].level1Result == true{
-                cell.imageView1.image = #imageLiteral(resourceName: "cat_icon2")
-            }
-            if words[indexPath.row].level2Result == true{
-                cell.imageView2.image = #imageLiteral(resourceName: "cat_icon2")
-            }
-            if words[indexPath.row].level3Result == true{
-                cell.imageView3.image = #imageLiteral(resourceName: "cat_icon2")
-            }
-            if words[indexPath.row].level4Result == true{
-                cell.imageView4.image = #imageLiteral(resourceName: "cat_icon2")
-            }
-            if words[indexPath.row].level5Result == true{
-                cell.imageView5.image = #imageLiteral(resourceName: "cat_icon2")
-            }
+            cell.imageView2.image = words[indexPath.row].level2Result ? quizType2.iconImage : quizType2.defultIconImage
             
-//            switch words[indexPath.row].clearCount {
-//            case 0:
-//                cell.checkImageView.image = #imageLiteral(resourceName: "cat0")
-//            case 1:
-//                cell.checkImageView.image = #imageLiteral(resourceName: "cat1_1_2")
-//            case 2:
-//                cell.checkImageView.image = #imageLiteral(resourceName: "cat1_2_2")
-//            case 3:
-//                cell.checkImageView.image = #imageLiteral(resourceName: "cat1_3_2")
-//            case 4:
-//                cell.checkImageView.image = #imageLiteral(resourceName: "cat1_4_2")
-//            case 5:
-//                cell.checkImageView.image = #imageLiteral(resourceName: "cat1_5_2")
-//            default:
-//                break
-//            }
+            cell.imageView3.image = words[indexPath.row].level3Result ? quizType3.iconImage : quizType3.defultIconImage
+            
+            cell.imageView4.image = words[indexPath.row].level4Result ? quizType4.iconImage : quizType4.defultIconImage
+            
+            cell.imageView5.image = words[indexPath.row].level5Result ? quizType5.iconImage : quizType5.defultIconImage
             
             
             return cell
@@ -200,31 +167,18 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         
         wordKindParameter = sender.selectedSegmentIndex
-        segementChangedaaa()
-        
-//        switch wordSegment.selectedSegmentIndex {
-//        case 0:
-//            wordQueue = vocabrary
-//        case 1:
-//            wordQueue = unClearVocabrary
-//        case 2:
-//            wordQueue = clearVocabrary
-//        default:
-//            break
-//        }
-//        
-//        myTableView.reloadData()
+        segementChanged()
         
     }
     
     
     @IBAction func sectionSegmentChanged(_ sender: UISegmentedControl) {
         sectionNumber = sender.selectedSegmentIndex
-        segementChangedaaa()
+        segementChanged()
         
     }
     
-    func segementChangedaaa(){
+    func segementChanged(){
         let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
         let realm = try! Realm(configuration: config)
         
@@ -246,21 +200,5 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
         }
         myTableView.reloadData()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -20,6 +20,7 @@ class WordTableViewCell: UITableViewCell {
     @IBOutlet weak var imageView4: UIImageView!
     @IBOutlet weak var imageView5: UIImageView!
     
+    @IBOutlet weak var sentenceLabel: UILabel!
     
     @IBOutlet weak var correctRatioLabel: UILabel!
     

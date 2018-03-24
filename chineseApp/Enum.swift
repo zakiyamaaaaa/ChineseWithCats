@@ -62,3 +62,32 @@ enum QuizType: Int {
     }
 }
 
+enum CatType: Int {
+    case cat1
+    case cat2
+    case cat3
+    case cat4
+    case cat5
+    case cat6
+    case cat7
+    
+    var image: UIImage {
+        switch self {
+        case .cat1:
+            return #imageLiteral(resourceName: "ball1")
+        case .cat2:
+            return #imageLiteral(resourceName: "ball2")
+        case .cat3:
+            return #imageLiteral(resourceName: "ball3")
+        case .cat4:
+            return #imageLiteral(resourceName: "ball4")
+        case .cat5:
+            return #imageLiteral(resourceName: "ball5")
+        case .cat6:
+            return #imageLiteral(resourceName: "ball6")
+        case .cat7:
+            return #imageLiteral(resourceName: "ball7")
+        }
+    }
+}
+

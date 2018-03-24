@@ -14,35 +14,6 @@ import Spring
 
 class QuizSelectionViewController: UIViewController {
 
-    enum CatType: Int {
-        case cat1
-        case cat2
-        case cat3
-        case cat4
-        case cat5
-        case cat6
-        case cat7
-        
-        var image: UIImage {
-            switch self {
-            case .cat1:
-                return #imageLiteral(resourceName: "ball1")
-            case .cat2:
-                return #imageLiteral(resourceName: "ball2")
-            case .cat3:
-                return #imageLiteral(resourceName: "ball3")
-            case .cat4:
-                return #imageLiteral(resourceName: "ball4")
-            case .cat5:
-                return #imageLiteral(resourceName: "ball5")
-            case .cat6:
-                return #imageLiteral(resourceName: "ball6")
-            case .cat7:
-                return #imageLiteral(resourceName: "ball7")
-            }
-        }
-    }
-    
         
     @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var level1Button: UIButton!
@@ -84,8 +55,6 @@ class QuizSelectionViewController: UIViewController {
                 print("Error: \(result.error)")
             }
         }
-        
-        let buttonDefaultImage = #imageLiteral(resourceName: "cat_icon").withRenderingMode(.alwaysTemplate)
         
         levelButtonList = [level1Button,level2Button,level3Button,level4Button,level5Button]
         
