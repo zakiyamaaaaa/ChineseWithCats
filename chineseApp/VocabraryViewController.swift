@@ -15,9 +15,11 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
     let voice = AVSpeechSynthesisVoice(language: "zh-CN")
     @IBOutlet weak var wordSectionSegment: UISegmentedControl!
     
+    @IBOutlet weak var navViewHeightConstraint: NSLayoutConstraint!
+    var defaultNavHeight: CGFloat!
     @IBOutlet weak var myTableView: UITableView!
     var words = Vocabrary()
-    
+    var yFlag = false
     @IBOutlet weak var wordSegment: UISegmentedControl!
     
     var unClearVocabrary:Results<WordObj>?
@@ -26,6 +28,7 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
     var wordQueue:Results<WordObj>?
     var sectionSegmentNumber = 0
     
+    var scrollBeginingPoint: CGPoint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +36,7 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
         myTableView.delegate = self
         myTableView.dataSource = self
         
-        
+        defaultNavHeight = navViewHeightConstraint.constant
         // Do any additional setup after loading the view.
     }
     
@@ -201,4 +204,30 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
         myTableView.reloadData()
     }
 
+}
+
+extension VocabraryViewController: UIScrollViewDelegate {
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        scrollBeginingPoint = scrollView.contentOffset
+        print("willbeginddragg:\(scrollView.contentOffset.y)")
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        print("velocity:\(velocity.y)")
+        print("willenddragg:\(scrollView.contentOffset.y)")
+        yFlag = velocity.y > 0 ? true : false
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        _ = scrollBeginingPoint.y < scrollView.contentOffset.y ? print("下") : print("上")
+        if yFlag == true, navViewHeightConstraint.constant > 60 {
+            navViewHeightConstraint.constant -= 2
+        }
+        
+        if yFlag == false, navViewHeightConstraint.constant < defaultNavHeight {
+            navViewHeightConstraint.constant += 2
+        }
+    }
+    
 }

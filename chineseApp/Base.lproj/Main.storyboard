@@ -31,8 +31,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iKX-SN-GkI">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="158"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FmX-0b-TIA">
+                                        <rect key="frame" x="64" y="74" width="192" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="全部"/>
+                                            <segment title="未クリア"/>
+                                            <segment title="クリア済み"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.84043484930000001" green="0.21145355699999999" blue="0.2421452701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="segmentChanged:" destination="e8T-M3-WR8" eventType="valueChanged" id="M1t-B1-jiL"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jz9-DS-TWA">
+                                        <rect key="frame" x="13" y="74" width="293" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="" image="ball1_small"/>
+                                            <segment title="" image="ball2_small"/>
+                                            <segment title="" image="ball3_small"/>
+                                            <segment title="" image="ball4_small"/>
+                                            <segment title="" image="ball5_small"/>
+                                            <segment title="" image="ball6_small"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.84043484930000001" green="0.21145355699999999" blue="0.2421452701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="sectionSegmentChanged:" destination="e8T-M3-WR8" eventType="valueChanged" id="Ofj-V0-jpx"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="単語一覧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrx-VS-BQI">
+                                        <rect key="frame" x="113" y="10" width="93" height="27.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                        <color key="textColor" red="0.84043484930000001" green="0.21145355699999999" blue="0.2421452701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="種類" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agh-ne-EfT">
+                                        <rect key="frame" x="147" y="81" width="25" height="14.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" red="0.84043484930000001" green="0.21145355699999999" blue="0.2421452701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ステージ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xd8-ys-QdU">
+                                        <rect key="frame" x="135" y="81" width="49.5" height="14.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" red="0.84043484930000001" green="0.21145355699999999" blue="0.2421452701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="wrx-VS-BQI" firstAttribute="top" secondItem="iKX-SN-GkI" secondAttribute="top" constant="10" id="B9K-xx-EoA"/>
+                                    <constraint firstItem="wrx-VS-BQI" firstAttribute="centerX" secondItem="iKX-SN-GkI" secondAttribute="centerX" id="b9F-b3-uuE"/>
+                                    <constraint firstAttribute="height" constant="158" id="dFh-kb-lEj"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="118" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kqs-V3-dUf">
-                                <rect key="frame" x="0.0" y="161" width="320" height="358"/>
+                                <rect key="frame" x="0.0" y="158" width="320" height="361"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="wordCell" rowHeight="118" id="3NK-50-qyv" customClass="WordTableViewCell" customModule="chineseApp" customModuleProvider="target">
@@ -139,72 +199,16 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FmX-0b-TIA">
-                                <rect key="frame" x="16" y="73.5" width="192" height="29"/>
-                                <segments>
-                                    <segment title="全部"/>
-                                    <segment title="未クリア"/>
-                                    <segment title="クリア済み"/>
-                                </segments>
-                                <color key="tintColor" red="0.84043484930000001" green="0.21145355699999999" blue="0.2421452701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="segmentChanged:" destination="e8T-M3-WR8" eventType="valueChanged" id="M1t-B1-jiL"/>
-                                </connections>
-                            </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jz9-DS-TWA">
-                                <rect key="frame" x="16" y="123" width="293" height="29"/>
-                                <segments>
-                                    <segment title="" image="ball1_small"/>
-                                    <segment title="" image="ball2_small"/>
-                                    <segment title="" image="ball3_small"/>
-                                    <segment title="" image="ball4_small"/>
-                                    <segment title="" image="ball5_small"/>
-                                    <segment title="" image="ball6_small"/>
-                                </segments>
-                                <color key="tintColor" red="0.84043484930000001" green="0.21145355699999999" blue="0.2421452701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="sectionSegmentChanged:" destination="e8T-M3-WR8" eventType="valueChanged" id="Ofj-V0-jpx"/>
-                                </connections>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="単語一覧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrx-VS-BQI">
-                                <rect key="frame" x="113.5" y="25" width="93" height="27.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
-                                <color key="textColor" red="0.84043484930000001" green="0.21145355699999999" blue="0.2421452701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="種類" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agh-ne-EfT">
-                                <rect key="frame" x="16" y="57" width="25" height="14.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                <color key="textColor" red="0.84043484930000001" green="0.21145355699999999" blue="0.2421452701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ステージ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xd8-ys-QdU">
-                                <rect key="frame" x="16" y="106.5" width="49.5" height="14.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                <color key="textColor" red="0.84043484930000001" green="0.21145355699999999" blue="0.2421452701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="neX-Mb-jxi" firstAttribute="top" secondItem="kqs-V3-dUf" secondAttribute="bottom" id="3HH-0A-iVD"/>
-                            <constraint firstItem="wrx-VS-BQI" firstAttribute="centerX" secondItem="ghW-tK-0y1" secondAttribute="centerX" id="4Kk-JQ-KLA"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="agh-ne-EfT" secondAttribute="trailing" constant="20" symbolic="YES" id="9py-A6-MPC"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xd8-ys-QdU" secondAttribute="trailing" constant="20" symbolic="YES" id="D5n-Wi-GIb"/>
-                            <constraint firstItem="agh-ne-EfT" firstAttribute="leading" secondItem="ghW-tK-0y1" secondAttribute="leading" constant="16" id="JPA-IF-lfL"/>
-                            <constraint firstItem="Xd8-ys-QdU" firstAttribute="top" secondItem="FmX-0b-TIA" secondAttribute="bottom" constant="5" id="LuP-86-Ajz"/>
                             <constraint firstItem="kqs-V3-dUf" firstAttribute="leading" secondItem="ghW-tK-0y1" secondAttribute="leading" id="Lum-sb-E0f"/>
-                            <constraint firstItem="agh-ne-EfT" firstAttribute="top" secondItem="uAa-no-lF7" secondAttribute="bottom" constant="37" id="TsT-Y5-1OL"/>
-                            <constraint firstItem="Xd8-ys-QdU" firstAttribute="leading" secondItem="agh-ne-EfT" secondAttribute="leading" id="a1e-Ya-h1J"/>
-                            <constraint firstItem="FmX-0b-TIA" firstAttribute="top" secondItem="agh-ne-EfT" secondAttribute="bottom" constant="2" id="bJZ-EQ-DMJ"/>
-                            <constraint firstItem="wrx-VS-BQI" firstAttribute="top" secondItem="uAa-no-lF7" secondAttribute="bottom" constant="5" id="kjS-7L-0C7"/>
-                            <constraint firstItem="jz9-DS-TWA" firstAttribute="top" secondItem="Xd8-ys-QdU" secondAttribute="bottom" constant="2" id="mpn-Kk-jR8"/>
+                            <constraint firstItem="kqs-V3-dUf" firstAttribute="top" secondItem="iKX-SN-GkI" secondAttribute="bottom" id="aoR-XP-bvg"/>
+                            <constraint firstItem="iKX-SN-GkI" firstAttribute="top" secondItem="ghW-tK-0y1" secondAttribute="top" id="ffr-ue-dej"/>
                             <constraint firstAttribute="trailing" secondItem="kqs-V3-dUf" secondAttribute="trailing" id="oxl-4T-FgI"/>
-                            <constraint firstItem="jz9-DS-TWA" firstAttribute="leading" secondItem="Xd8-ys-QdU" secondAttribute="leading" id="pKT-M9-YIE"/>
-                            <constraint firstItem="FmX-0b-TIA" firstAttribute="leading" secondItem="agh-ne-EfT" secondAttribute="leading" id="qA9-Px-Miv"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jz9-DS-TWA" secondAttribute="trailing" constant="11" id="v9o-cL-DZf"/>
-                            <constraint firstItem="kqs-V3-dUf" firstAttribute="top" secondItem="jz9-DS-TWA" secondAttribute="bottom" constant="10" id="wrI-7R-bZm"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FmX-0b-TIA" secondAttribute="trailing" constant="20" symbolic="YES" id="y2S-Yf-cPB"/>
+                            <constraint firstAttribute="trailing" secondItem="iKX-SN-GkI" secondAttribute="trailing" id="tXg-PF-Lea"/>
+                            <constraint firstItem="iKX-SN-GkI" firstAttribute="leading" secondItem="ghW-tK-0y1" secondAttribute="leading" id="uwD-pj-0JL"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="footer-2_30" id="m8t-c8-Kp6" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
@@ -219,6 +223,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="myTableView" destination="kqs-V3-dUf" id="C96-7B-zjZ"/>
+                        <outlet property="navViewHeightConstraint" destination="dFh-kb-lEj" id="VNa-AT-x3d"/>
                         <outlet property="wordSectionSegment" destination="jz9-DS-TWA" id="VPH-AN-Aoz"/>
                         <outlet property="wordSegment" destination="FmX-0b-TIA" id="a7i-zX-4yL"/>
                     </connections>
