@@ -41,9 +41,32 @@ class QuizSelectionViewController: UIViewController {
                 return #imageLiteral(resourceName: "ball7")
             }
         }
-        
     }
     
+    enum QuizType: Int {
+        case level1
+        case level2
+        case level3
+        case level4
+        case level5
+        
+        var bgImage: UIImage {
+            switch self {
+            case .level1:
+                return #imageLiteral(resourceName: "wind-min")
+            case .level2:
+                return #imageLiteral(resourceName: "hayashi-min")
+            case .level3:
+                return #imageLiteral(resourceName: "water-min")
+            case .level4:
+                return #imageLiteral(resourceName: "forest-min")
+            case .level5:
+                return #imageLiteral(resourceName: "water-min")
+            }
+        }
+    }
+    
+    @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var level1Button: UIButton!
     @IBOutlet weak var level2Button: UIButton!
     @IBOutlet weak var level3Button: UIButton!
@@ -97,8 +120,10 @@ class QuizSelectionViewController: UIViewController {
             
         }
         
-        level1Button.tintColor = UIColor.red
-        level1Button.alpha = 1
+        levelButtonList.first?.tintColor = UIColor.red
+        levelButtonList.first?.alpha = 1
+        
+        bgImageView.image = QuizType.level1.bgImage
     }
     
     @objc func levelButtonPushed(sender:UIButton){
@@ -107,11 +132,14 @@ class QuizSelectionViewController: UIViewController {
             button.alpha = 0.7
             button.tintColor = UIColor.gray
         }
+        
         sender.alpha = 1
         sender.tintColor = UIColor.red
         selectLevel = sender.tag
+        
+        let quizType = QuizType(rawValue: sender.tag)!
+        bgImageView.image = quizType.bgImage
     }
-    
     
     @IBAction func goToTest(_ sender: Any) {
         ScreenTransitionManager.shared.goToQuiz(section: sectionNumber, level: selectLevel)

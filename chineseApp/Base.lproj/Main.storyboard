@@ -635,6 +635,7 @@
                         </connections>
                     </tabBarItem>
                     <connections>
+                        <outlet property="bgImageView" destination="b2H-OC-5q1" id="V2I-5h-tPj"/>
                         <outlet property="level1Button" destination="aOI-Ck-Ldo" id="0Lg-Qx-6To"/>
                         <outlet property="level2Button" destination="2OY-BT-JY6" id="B2O-IG-2jm"/>
                         <outlet property="level3Button" destination="zAx-XH-YZE" id="09F-pl-Hu6"/>
