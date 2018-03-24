@@ -15,15 +15,19 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
     let synthesizer = AVSpeechSynthesizer()
     let voice = AVSpeechSynthesisVoice(language: "zh-CN")
     @IBOutlet weak var myTableView: UITableView!
+    var yFlag = true
+    var isPin = false
+    var defaultNavHeight:CGFloat!
     var histryWordList:Results<LearnHistory>?
     @IBOutlet weak var upgradeButton: RoundedRectButton!
     
+    @IBOutlet weak var navBarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var upgradeView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         IAPService.shared.getProducts()
-        
+        defaultNavHeight = navBarHeightConstraint.constant
         myTableView.delegate = self
         myTableView.dataSource = self
         // Do any additional setup after loading the view.
@@ -476,6 +480,31 @@ extension UIViewController{
             return alertWithTitle("Receipt Refreched", message: "Receipt refreshed successfully")
         case .error(let error):
             return alertWithTitle("Receive refresh failed", message: "Receipt refresh failed")
+        }
+    }
+    
+}
+
+extension ReviewViewController: UIScrollViewDelegate {
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        print("velocity:\(velocity.y)")
+        print("willenddragg:\(scrollView.contentOffset.y)")
+        yFlag = velocity.y > 0 ? true : false
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //        _ = scrollBeginingPoint.y < scrollView.contentOffset.y ? print("下") : print("上")
+        if yFlag == true, navBarHeightConstraint.constant > 40, isPin == false {
+            navBarHeightConstraint.constant -= 2
+        }
+        
+        if yFlag == false, navBarHeightConstraint.constant < defaultNavHeight , isPin == false{
+            navBarHeightConstraint.constant += 2
         }
     }
     

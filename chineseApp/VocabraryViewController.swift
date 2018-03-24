@@ -263,6 +263,10 @@ extension VocabraryViewController: UIScrollViewDelegate {
         yFlag = velocity.y > 0 ? true : false
     }
     
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        _ = scrollBeginingPoint.y < scrollView.contentOffset.y ? print("下") : print("上")
         if yFlag == true, navViewHeightConstraint.constant > 60, isPin == false {
