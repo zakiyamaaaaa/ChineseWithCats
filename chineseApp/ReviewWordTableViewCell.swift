@@ -15,6 +15,7 @@ class ReviewWordTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var soundButton: UIButton!
     @IBOutlet weak var pinyinLabel: UILabel!
+    @IBOutlet weak var sentenseLabel: UILabel!
     
     @IBOutlet weak var levelLabel: UILabel!
     

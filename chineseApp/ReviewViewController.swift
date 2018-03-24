@@ -19,7 +19,9 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
     var isPin = false
     var defaultNavHeight:CGFloat!
     var histryWordList:Results<LearnHistory>?
+    
     @IBOutlet weak var upgradeButton: RoundedRectButton!
+    
     
     @IBOutlet weak var navBarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var upgradeView: UIView!
@@ -65,6 +67,7 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
         cell.soundButton.tag = indexPath.row
         cell.wordLabel.text = word.word
         cell.pinyinLabel.text = word.pinyin
+        cell.sentenseLabel.text = word.sentence
         if let difference = calculateDate(time: word.date).day{
             cell.dateLabel.text = String(describing: difference) + "日前"
             if difference == 0{
@@ -477,9 +480,10 @@ extension UIViewController{
     func alertForRefreshReciept(result:RefreshReceiptResult)->UIAlertController{
         switch result {
         case .success(let receiptDate):
-            return alertWithTitle("Receipt Refreched", message: "Receipt refreshed successfully")
+            return alertWithTitle("Receipt Refreched", message: "Receipt refreshed successfully:\(receiptDate.description)")
+            
         case .error(let error):
-            return alertWithTitle("Receive refresh failed", message: "Receipt refresh failed")
+            return alertWithTitle("Receive refresh failed", message: "Receipt refresh failed:Error\(error.localizedDescription)")
         }
     }
     
