@@ -422,39 +422,39 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="BU4-dW-JhG">
-                                        <rect key="frame" x="44" y="29" width="200" height="41"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="BU4-dW-JhG">
+                                        <rect key="frame" x="34" y="29" width="220" height="41"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOI-Ck-Ldo">
                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="41"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="EPO-9H-ors"/>
                                                 </constraints>
-                                                <state key="normal" image="cat_icon"/>
+                                                <state key="normal" image="windIcon"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2OY-BT-JY6">
-                                                <rect key="frame" x="40" y="0.0" width="40" height="41"/>
+                                                <rect key="frame" x="45" y="0.0" width="40" height="41"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="2cv-ME-q09"/>
                                                 </constraints>
-                                                <state key="normal" image="cat_icon"/>
+                                                <state key="normal" image="hayashiIcon"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAx-XH-YZE">
-                                                <rect key="frame" x="80" y="0.0" width="40" height="41"/>
+                                                <rect key="frame" x="90" y="0.0" width="40" height="41"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="6bG-5f-1Ny"/>
                                                 </constraints>
-                                                <state key="normal" image="cat_icon"/>
+                                                <state key="normal" image="fireIcon"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7MC-Nc-5H6">
-                                                <rect key="frame" x="120" y="0.0" width="40" height="41"/>
+                                                <rect key="frame" x="135" y="0.0" width="40" height="41"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="4Bj-fu-Gqh"/>
                                                 </constraints>
-                                                <state key="normal" image="cat_icon"/>
+                                                <state key="normal" image="mountainIcon"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5D-Vw-PYy">
-                                                <rect key="frame" x="160" y="0.0" width="40" height="41"/>
+                                                <rect key="frame" x="180" y="0.0" width="40" height="41"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="OfG-a1-s9Q"/>
                                                 </constraints>
@@ -1374,6 +1374,7 @@
         <image name="ball6" width="363" height="367"/>
         <image name="ball6_small" width="33" height="30"/>
         <image name="cat_icon" width="180" height="180"/>
+        <image name="fireIcon" width="44" height="44"/>
         <image name="footer-1_30" width="30" height="30"/>
         <image name="footer-2_30" width="30" height="30"/>
         <image name="footer-3_30" width="30" height="30"/>
@@ -1385,9 +1386,12 @@
         <image name="grayball4" width="363" height="367"/>
         <image name="grayball5" width="363" height="367"/>
         <image name="grayball6" width="363" height="367"/>
+        <image name="hayashiIcon" width="44" height="44"/>
+        <image name="mountainIcon" width="44" height="44"/>
         <image name="person1" width="735" height="794"/>
         <image name="screen01" width="320" height="523"/>
         <image name="screen02" width="320" height="523"/>
         <image name="voicebutton_2" width="50" height="50"/>
+        <image name="windIcon" width="44" height="44"/>
     </resources>
 </document>

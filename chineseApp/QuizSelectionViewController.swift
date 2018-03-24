@@ -64,6 +64,36 @@ class QuizSelectionViewController: UIViewController {
                 return #imageLiteral(resourceName: "water-min")
             }
         }
+        
+        var iconImage: UIImage {
+            switch self {
+            case .level1:
+                return #imageLiteral(resourceName: "windIcon")
+            case .level2:
+                return #imageLiteral(resourceName: "hayashiIcon")
+            case .level3:
+                return #imageLiteral(resourceName: "fireIcon")
+            case .level4:
+                return #imageLiteral(resourceName: "mountainIcon")
+            case .level5:
+                return #imageLiteral(resourceName: "waterIcon")
+            }
+        }
+        
+        var defultIconImage: UIImage {
+            switch self {
+            case .level1:
+                return #imageLiteral(resourceName: "windIconDefault")
+            case .level2:
+                return #imageLiteral(resourceName: "hayashiIconDefault")
+            case .level3:
+                return #imageLiteral(resourceName: "fireIconDefault")
+            case .level4:
+                return #imageLiteral(resourceName: "mountainIconDefault")
+            case .level5:
+                return #imageLiteral(resourceName: "waterIconDefault")
+            }
+        }
     }
     
     @IBOutlet weak var bgImageView: UIImageView!
@@ -112,8 +142,7 @@ class QuizSelectionViewController: UIViewController {
         levelButtonList = [level1Button,level2Button,level3Button,level4Button,level5Button]
         
         for (index,button) in levelButtonList.enumerated(){
-            button.alpha = 0.7
-            button.setImage(buttonDefaultImage, for: .normal)
+            button.setImage(QuizType(rawValue: index)!.defultIconImage, for: .normal)
             button.tintColor = UIColor.gray
             button.addTarget(self, action: #selector(self.levelButtonPushed(sender:)), for: .touchUpInside)
             button.tag = index
@@ -121,23 +150,19 @@ class QuizSelectionViewController: UIViewController {
         }
         
         levelButtonList.first?.tintColor = UIColor.red
-        levelButtonList.first?.alpha = 1
-        
+        levelButtonList.first?.setImage(QuizType.level1.iconImage, for: .normal)
         bgImageView.image = QuizType.level1.bgImage
     }
     
     @objc func levelButtonPushed(sender:UIButton){
         
         for button in levelButtonList{
-            button.alpha = 0.7
-            button.tintColor = UIColor.gray
+            button.setImage(QuizType(rawValue: button.tag)!.defultIconImage, for: .normal)
         }
         
-        sender.alpha = 1
-        sender.tintColor = UIColor.red
         selectLevel = sender.tag
-        
         let quizType = QuizType(rawValue: sender.tag)!
+        sender.setImage(quizType.iconImage, for: .normal)
         bgImageView.image = quizType.bgImage
     }
     
