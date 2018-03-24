@@ -24,7 +24,8 @@ class WordTestViewController: UIViewController{
     @IBOutlet weak var unkownButton: UIButton!
     @IBOutlet weak var progressVIew: UIProgressView!
     @IBOutlet weak var pingyingLabel: UILabel!
-    @IBOutlet weak var resultImageView: SpringImageView!
+    @IBOutlet weak var incorrectResultImageView: SpringImageView!
+    @IBOutlet weak var correctResultImageView: SpringImageView!
     
     let voice = AVSpeechSynthesisVoice(language: "zh-CN")
     let synthesizer = AVSpeechSynthesizer()
@@ -94,7 +95,10 @@ class WordTestViewController: UIViewController{
         }
         
         
-        self.resultImageView.alpha = 0
+        correctResultImageView.alpha = 0
+        incorrectResultImageView.alpha = 0
+        correctResultImageView.animation = "fadeIn"
+        incorrectResultImageView.animation = "fadeIn"
         
         // Do any additional setup after loading the view.
     }
@@ -271,9 +275,6 @@ class WordTestViewController: UIViewController{
         //経過時間を止める
         timer.invalidate()
         
-        resultImageView.animation = "fadeIn"
-        resultImageView.animate()
-        
         switch answerOrder {
         case 0:
             option1Button.layer.borderColor = UIColor.red.cgColor
@@ -323,7 +324,7 @@ class WordTestViewController: UIViewController{
     //正解したときの挙動
     func correct(){
         AudioPlayer.shared.playSound(AudioPlayer.soundTitle.correct)
-        resultImageView.image = #imageLiteral(resourceName: "good_cat")
+        correctResultImageView.animate()
         
         numberOfCorrect += 1
         point += pointUnit
@@ -357,7 +358,7 @@ class WordTestViewController: UIViewController{
         scoreResult.append(false)
         point -= pointUnit
         pointLabel.text = String(point)
-        resultImageView.image = #imageLiteral(resourceName: "bad_cat")
+        incorrectResultImageView.animate()
         let word = quizWordList[quizList.first!]
         try! realm.write {
             word.wrongCount += 1
@@ -371,11 +372,12 @@ class WordTestViewController: UIViewController{
     @IBAction func nextButtonTapped(_ sender: Any) {
         
         UIView.animate(withDuration: 1) {
-            self.resultImageView.alpha = 0
+            self.correctResultImageView.alpha = 0
+            self.incorrectResultImageView.alpha = 0
         }
         
         
-        self.resultImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+//        self.resultImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
         
         if numberOfAnswer == numberOfQuiz{
             

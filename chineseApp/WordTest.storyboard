@@ -307,6 +307,8 @@
                     </view>
                     <connections>
                         <outlet property="bgImageView" destination="njv-5Q-8Lk" id="mIF-1s-EX9"/>
+                        <outlet property="correctResultImageView" destination="E2g-gm-OnH" id="udw-e7-KKt"/>
+                        <outlet property="incorrectResultImageView" destination="xgz-kH-ccc" id="Ri5-k3-mB2"/>
                         <outlet property="nextButton" destination="Mqt-hQ-DtN" id="btQ-rl-ecb"/>
                         <outlet property="option1Button" destination="GFT-bp-EYU" id="eVi-W8-fys"/>
                         <outlet property="option2Button" destination="Vt5-bw-SQ4" id="4qt-pm-ZbR"/>
@@ -315,7 +317,6 @@
                         <outlet property="pingyingLabel" destination="WBm-Fn-oMg" id="9g1-rR-nLX"/>
                         <outlet property="pointLabel" destination="RxI-cU-kTg" id="LhN-C5-B8P"/>
                         <outlet property="progressVIew" destination="zdG-3Z-0kg" id="HNp-nH-cun"/>
-                        <outlet property="resultImageView" destination="xgz-kH-ccc" id="8GP-gf-K7k"/>
                         <outlet property="testWordLabel" destination="PhI-jk-87q" id="n6N-xA-A9W"/>
                         <outlet property="unkownButton" destination="T6z-Vk-N0Y" id="VCv-1y-MYp"/>
                         <segue destination="55P-8B-abf" kind="presentation" identifier="resultSegue" id="l1E-ov-psK"/>
