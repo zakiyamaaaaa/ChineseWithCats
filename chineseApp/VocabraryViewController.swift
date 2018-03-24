@@ -11,10 +11,20 @@ import RealmSwift
 import AVFoundation
 
 class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
+    
+    enum UndisplayType: Int {
+        case none
+        case word
+        case pinyin
+        case sentense
+    }
+    
+    
     let synthesizer = AVSpeechSynthesizer()
     let voice = AVSpeechSynthesisVoice(language: "zh-CN")
     @IBOutlet weak var wordSectionSegment: UISegmentedControl!
     
+    @IBOutlet weak var undisplaySementedControl: UISegmentedControl!
     @IBOutlet weak var navViewHeightConstraint: NSLayoutConstraint!
     var defaultNavHeight: CGFloat!
     @IBOutlet weak var myTableView: UITableView!
@@ -92,6 +102,9 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
             cell.voiceButton.addTarget(self, action: #selector(self.speechWord(sender:)), for: .touchUpInside)
             cell.voiceButton.tag = indexPath.row
             cell.sentenceLabel.text = words[indexPath.row].sentense
+            cell.wordLabel.isHidden = false
+            cell.pinyinLabel.isHidden = false
+            cell.sentenceLabel.isHidden = false
             
             if words[indexPath.row].clearCount == 0 && words[indexPath.row].wrongCount == 0{
                 cell.correctRatioLabel.text = ""
@@ -116,6 +129,18 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
             
             cell.imageView5.image = words[indexPath.row].level5Result ? quizType5.iconImage : quizType5.defultIconImage
             
+            switch undisplaySementedControl.selectedSegmentIndex {
+            case UndisplayType.none.rawValue:
+                break
+            case UndisplayType.word.rawValue:
+                cell.wordLabel.isHidden = true
+            case UndisplayType.pinyin.rawValue:
+                cell.pinyinLabel.isHidden = true
+            case UndisplayType.sentense.rawValue:
+                cell.sentenceLabel.isHidden = true
+            default:
+                break
+            }
             
             return cell
         }
@@ -178,9 +203,13 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
     @IBAction func sectionSegmentChanged(_ sender: UISegmentedControl) {
         sectionNumber = sender.selectedSegmentIndex
         segementChanged()
-        
     }
     
+    @IBAction func displaySegmentChanged(_ sender: UISegmentedControl) {
+        
+        myTableView.reloadData()
+    }
+
     func segementChanged(){
         let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
         let realm = try! Realm(configuration: config)
