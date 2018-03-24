@@ -1,0 +1,6 @@
+framework module Pods_chineseAppTests {
+  umbrella header "Pods-chineseAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,12 @@
+- Does your app access any paid content or services?
+A.Yes
+
+- What are the paid content or services, and what are the costs?
+A.The paid content is enable you to use review function. you can check the history of leaning words and result.
+it costs to use the function.
+
+- Do individual customers pay for the content or services?
+A.yes
+
+- Where do they pay, and what's the payment method?
+A.you pay at the section of review in app. the payment method is non-consumable.

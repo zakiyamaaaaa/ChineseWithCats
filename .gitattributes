@@ -1,0 +1,2 @@
+chineseApp.ipa filter=lfs diff=lfs merge=lfs -text
+./Pods/Realm filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,5 @@
+Learn chinese with cat!
+
+You learn chinese words with cats at this App.
+You try and clear words quiz. After you complete them, you get “cat ball“
+When it gather experience score to correct quiz, your level is raised. If you raise the level, you will become a variety of characters.
