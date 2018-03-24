@@ -19,9 +19,12 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
         case sentense
     }
     
-    
+    // navBarの高さを固定にするピンフラグ
+    var isPin = false
+    let pinAlpha:CGFloat = 0.5
     let synthesizer = AVSpeechSynthesizer()
     let voice = AVSpeechSynthesisVoice(language: "zh-CN")
+    @IBOutlet weak var pinButton: UIButton!
     @IBOutlet weak var wordSectionSegment: UISegmentedControl!
     
     @IBOutlet weak var undisplaySementedControl: UISegmentedControl!
@@ -46,6 +49,7 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
         myTableView.delegate = self
         myTableView.dataSource = self
         
+        pinButton.alpha = pinAlpha
         defaultNavHeight = navViewHeightConstraint.constant
         // Do any additional setup after loading the view.
     }
@@ -76,6 +80,17 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
         
     }
 
+    @IBAction func pinButtonTapped(_ sender: UIButton) {
+        isPin = !isPin
+        switch isPin {
+        case true:
+            sender.alpha = 1
+        default:
+            sender.alpha = pinAlpha
+        }
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         
@@ -250,11 +265,11 @@ extension VocabraryViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        _ = scrollBeginingPoint.y < scrollView.contentOffset.y ? print("下") : print("上")
-        if yFlag == true, navViewHeightConstraint.constant > 60 {
+        if yFlag == true, navViewHeightConstraint.constant > 60, isPin == false {
             navViewHeightConstraint.constant -= 2
         }
         
-        if yFlag == false, navViewHeightConstraint.constant < defaultNavHeight {
+        if yFlag == false, navViewHeightConstraint.constant < defaultNavHeight , isPin == false{
             navViewHeightConstraint.constant += 2
         }
     }

@@ -235,9 +235,16 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Oe-JI-U7a">
-                                <rect key="frame" x="274" y="479" width="30" height="30"/>
-                                <state key="normal" title="PIN"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Oe-JI-U7a">
+                                <rect key="frame" x="254" y="459" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Pel-Im-OFK"/>
+                                    <constraint firstAttribute="width" constant="50" id="xKo-GD-uiu"/>
+                                </constraints>
+                                <state key="normal" title="PIN" image="pin"/>
+                                <connections>
+                                    <action selector="pinButtonTapped:" destination="e8T-M3-WR8" eventType="touchUpInside" id="fdn-MH-F4l"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -266,6 +273,7 @@
                     <connections>
                         <outlet property="myTableView" destination="kqs-V3-dUf" id="C96-7B-zjZ"/>
                         <outlet property="navViewHeightConstraint" destination="dFh-kb-lEj" id="VNa-AT-x3d"/>
+                        <outlet property="pinButton" destination="4Oe-JI-U7a" id="957-vn-YKs"/>
                         <outlet property="undisplaySementedControl" destination="toY-Lb-W4L" id="iV2-rA-gZm"/>
                         <outlet property="wordSectionSegment" destination="jz9-DS-TWA" id="VPH-AN-Aoz"/>
                         <outlet property="wordSegment" destination="FmX-0b-TIA" id="a7i-zX-4yL"/>
@@ -1451,6 +1459,7 @@
         <image name="hayashiIcon" width="44" height="44"/>
         <image name="mountainIcon" width="44" height="44"/>
         <image name="person1" width="735" height="794"/>
+        <image name="pin" width="123" height="123"/>
         <image name="screen01" width="320" height="523"/>
         <image name="screen02" width="320" height="523"/>
         <image name="voicebutton_2" width="50" height="50"/>
