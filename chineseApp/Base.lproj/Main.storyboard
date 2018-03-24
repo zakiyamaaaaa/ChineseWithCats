@@ -359,7 +359,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pXT-EA-PSE">
-                                        <rect key="frame" x="5" y="36" width="277" height="29"/>
+                                        <rect key="frame" x="15" y="36" width="257" height="29"/>
                                         <segments>
                                             <segment title="" image="ball1_small"/>
                                             <segment title="" image="ball2_small"/>
@@ -389,7 +389,7 @@
                                     <constraint firstItem="aCA-t0-rrs" firstAttribute="top" secondItem="exr-OO-iU7" secondAttribute="top" constant="6" id="RbT-KE-HJe"/>
                                     <constraint firstAttribute="bottom" secondItem="K66-wg-KwF" secondAttribute="bottom" constant="3" id="l0W-T5-lN0"/>
                                     <constraint firstItem="pXT-EA-PSE" firstAttribute="centerX" secondItem="exr-OO-iU7" secondAttribute="centerX" id="moW-ff-xMa"/>
-                                    <constraint firstItem="pXT-EA-PSE" firstAttribute="leading" secondItem="exr-OO-iU7" secondAttribute="leading" constant="5" id="qGs-vr-2rl"/>
+                                    <constraint firstItem="pXT-EA-PSE" firstAttribute="leading" secondItem="exr-OO-iU7" secondAttribute="leading" constant="15" id="qGs-vr-2rl"/>
                                     <constraint firstItem="pXT-EA-PSE" firstAttribute="centerY" secondItem="exr-OO-iU7" secondAttribute="centerY" id="zQQ-nW-pzB"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>

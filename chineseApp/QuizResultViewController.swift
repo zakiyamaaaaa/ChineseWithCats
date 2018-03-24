@@ -35,7 +35,7 @@ class QuizResultViewController: UIViewController,UITableViewDataSource{
         
         quizList = QuizManager.shared.quizList
         scoreList = QuizManager.shared.scoreList
-        
+        quizResultTableView.tableFooterView = UIView(frame: .zero)
         
         
         let experiencePoint = UserManager.shared.experience
@@ -81,6 +81,7 @@ class QuizResultViewController: UIViewController,UITableViewDataSource{
     
     override func viewWillDisappear(_ animated: Bool) {
         QuizManager.shared.reset()
+        
     }
     
 
