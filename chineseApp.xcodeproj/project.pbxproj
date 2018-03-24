@@ -11,7 +11,7 @@
 		390808A51F66C21E009AFEAF /* wrong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 390808A31F66C21E009AFEAF /* wrong.mp3 */; };
 		390808A61F66C21E009AFEAF /* correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 390808A41F66C21E009AFEAF /* correct.mp3 */; };
 		391145511F7BC2CE00AA3C8C /* QuizSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391145501F7BC2CE00AA3C8C /* QuizSelectionViewController.swift */; };
-		391145531F7BC4DF00AA3C8C /* QuizType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391145521F7BC4DF00AA3C8C /* QuizType.swift */; };
+		391145531F7BC4DF00AA3C8C /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391145521F7BC4DF00AA3C8C /* Enum.swift */; };
 		391145551F7D0A9C00AA3C8C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391145541F7D0A9C00AA3C8C /* User.swift */; };
 		391145571F7D0B4100AA3C8C /* LearnHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391145561F7D0B4100AA3C8C /* LearnHistory.swift */; };
 		391145591F7D0EB700AA3C8C /* InitialSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391145581F7D0EB700AA3C8C /* InitialSet.swift */; };
@@ -95,7 +95,7 @@
 		390808A31F66C21E009AFEAF /* wrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wrong.mp3; sourceTree = "<group>"; };
 		390808A41F66C21E009AFEAF /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
 		391145501F7BC2CE00AA3C8C /* QuizSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizSelectionViewController.swift; sourceTree = "<group>"; };
-		391145521F7BC4DF00AA3C8C /* QuizType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizType.swift; sourceTree = "<group>"; };
+		391145521F7BC4DF00AA3C8C /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		391145541F7D0A9C00AA3C8C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		391145561F7D0B4100AA3C8C /* LearnHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnHistory.swift; sourceTree = "<group>"; };
 		391145581F7D0EB700AA3C8C /* InitialSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialSet.swift; sourceTree = "<group>"; };
@@ -367,7 +367,7 @@
 				39EB80B51F67D26A00D33DE3 /* CorrectImageModel.swift */,
 				3994B8391F69518F00B220D0 /* wordManager.swift */,
 				39A175731F583A0000526C1B /* Vocabrary.swift */,
-				391145521F7BC4DF00AA3C8C /* QuizType.swift */,
+				391145521F7BC4DF00AA3C8C /* Enum.swift */,
 				391145611F7FA26200AA3C8C /* AudioPlayer.swift */,
 			);
 			name = Utility;
@@ -716,7 +716,7 @@
 				391844C92065FCC100E482F3 /* RoundedRectView.swift in Sources */,
 				3973A4A31F8E038F00713FA3 /* StoreKistAccessor.swift in Sources */,
 				3973A4A11F8DD33900713FA3 /* ProductManager.swift in Sources */,
-				391145531F7BC4DF00AA3C8C /* QuizType.swift in Sources */,
+				391145531F7BC4DF00AA3C8C /* Enum.swift in Sources */,
 				3960609E1F614C1700A643AA /* QuizResultTableViewCell.swift in Sources */,
 				3929A1981F53FDF700F79823 /* ViewController.swift in Sources */,
 				3973A4A91F8E31AE00713FA3 /* IAPProduct.swift in Sources */,
