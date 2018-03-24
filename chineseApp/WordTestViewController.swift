@@ -19,7 +19,6 @@ class WordTestViewController: UIViewController{
     @IBOutlet weak var option2Button: RoundedRectButton!
     @IBOutlet weak var option3Button: RoundedRectButton!
     @IBOutlet weak var option4Button: RoundedRectButton!
-    
     @IBOutlet weak var pointLabel: UILabel!
     @IBOutlet weak var unkownButton: UIButton!
     @IBOutlet weak var progressVIew: UIProgressView!
@@ -100,6 +99,7 @@ class WordTestViewController: UIViewController{
         correctResultImageView.animation = "fadeIn"
         incorrectResultImageView.animation = "fadeIn"
         
+        optionButtonList = [option1Button,option2Button,option3Button, option4Button]
         // Do any additional setup after loading the view.
     }
     
@@ -150,6 +150,8 @@ class WordTestViewController: UIViewController{
         let quizWord = quizWordList[quizList.first!]
         QuizManager.shared.quizList.append(quizWord)
         
+        let utterance = AVSpeechUtterance(string: quizWord.word)
+        utterance.voice = voice
         switch levelNumber {
         case 0:
             
@@ -158,8 +160,7 @@ class WordTestViewController: UIViewController{
             pingyingLabel.text = quizWord.pinyin
             
             //しゃべる
-            let utterance = AVSpeechUtterance(string: quizWord.word)
-            utterance.voice = voice
+            
             synthesizer.speak(utterance)
             setAnswer(answerNumber: quizList.first!, answerWord: quizWord.meaning, answerRow: 1)
         case 1:
@@ -172,8 +173,7 @@ class WordTestViewController: UIViewController{
             
             testWordLabel.text = quizWord.pinyin
             pingyingLabel.isHidden = true
-            let utterance = AVSpeechUtterance(string: quizWord.word)
-            utterance.voice = voice
+            
             synthesizer.speak(utterance)
             setAnswer(answerNumber: quizList.first!, answerWord: quizWord.word, answerRow: 0)
         case 3:
@@ -181,8 +181,7 @@ class WordTestViewController: UIViewController{
             
             testWordLabel.isHidden = true
             pingyingLabel.isHidden = true
-            let utterance = AVSpeechUtterance(string: quizWord.word)
-            utterance.voice = voice
+            
             synthesizer.speak(utterance)
             setAnswer(answerNumber: quizList.first!, answerWord: quizWord.meaning, answerRow: 1)
         case 4:
@@ -209,8 +208,7 @@ class WordTestViewController: UIViewController{
             pingyingLabel.text = quizWord.pinyin
             
             //しゃべる
-            let utterance = AVSpeechUtterance(string: quizWord.word)
-            utterance.voice = voice
+            
             synthesizer.speak(utterance)
             setAnswer(answerNumber: quizList.first!, answerWord: quizWord.meaning, answerRow: 1)
         }
@@ -232,25 +230,11 @@ class WordTestViewController: UIViewController{
             }
             
         }
-        
-        option1Button.setTitle(vocabraryList[optionWordList[0]][answerRow], for: .normal)
-        option2Button.setTitle(vocabraryList[optionWordList[1]][answerRow], for: .normal)
-        option3Button.setTitle(vocabraryList[optionWordList[2]][answerRow], for: .normal)
-        option4Button.setTitle(vocabraryList[optionWordList[3]][answerRow], for: .normal)
-        
         answerOrder = Int(arc4random_uniform(4))
-        switch answerOrder {
-        case 0:
-            option1Button.setTitle(answerWord, for: .normal)
-        case 1:
-            option2Button.setTitle(answerWord, for: .normal)
-        case 2:
-            option3Button.setTitle(answerWord, for: .normal)
-        case 3:
-            option4Button.setTitle(answerWord, for: .normal)
-        default:
-            break
+        optionButtonList.enumerated().forEach { (index,elemnt) in
+            elemnt.setTitle(vocabraryList[optionWordList[index]][answerRow], for: .normal)
         }
+        optionButtonList[answerOrder].setTitle(answerWord, for: .normal)
         
     }
     
@@ -275,18 +259,7 @@ class WordTestViewController: UIViewController{
         //経過時間を止める
         timer.invalidate()
         
-        switch answerOrder {
-        case 0:
-            option1Button.layer.borderColor = UIColor.red.cgColor
-        case 1:
-            option2Button.layer.borderColor = UIColor.red.cgColor
-        case 2:
-            option3Button.layer.borderColor = UIColor.red.cgColor
-        case 3:
-            option4Button.layer.borderColor = UIColor.red.cgColor
-        default:
-            break
-        }
+        optionButtonList[answerOrder].setTitleColor(UIColor.red, for: .normal)
         
         quizList.removeFirst()
         numberOfAnswer += 1
@@ -335,7 +308,7 @@ class WordTestViewController: UIViewController{
         try! realm.write {
             word.clearCount += 1
             
-            switch levelNumber{
+            switch levelNumber {
             case 0:
                 word.level1Result = true
             case 1:
@@ -371,13 +344,14 @@ class WordTestViewController: UIViewController{
     
     @IBAction func nextButtonTapped(_ sender: Any) {
         
+        optionButtonList.forEach { (button) in
+            button.setTitleColor(UIColor.black, for: .normal)
+        }
+        
         UIView.animate(withDuration: 1) {
             self.correctResultImageView.alpha = 0
             self.incorrectResultImageView.alpha = 0
         }
-        
-        
-//        self.resultImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
         
         if numberOfAnswer == numberOfQuiz{
             
@@ -389,7 +363,19 @@ class WordTestViewController: UIViewController{
             
             ScreenTransitionManager.shared.goToResult()
             
-        }else{
+        } else if numberOfAnswer == numberOfQuiz {
+            quizStart()
+            nextButton.isEnabled = false
+            nextButton.alpha = 0.7
+            nextButton.setTitle("結果を見る", for: .normal)
+            
+            optionButtonList.forEach({ (button) in
+                button.isEnabled = true
+                button.layer.borderColor = UIColor.black.cgColor
+            })
+            
+            
+        } else{
             quizStart()
             nextButton.isEnabled = false
             nextButton.alpha = 0.7
@@ -398,10 +384,7 @@ class WordTestViewController: UIViewController{
                 button.isEnabled = true
                 button.layer.borderColor = UIColor.black.cgColor
             })
-            
         }
-        
-        
     }
 
     @IBAction func unknownButtonPushed(_ sender: Any) {

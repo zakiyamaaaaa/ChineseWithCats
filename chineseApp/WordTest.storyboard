@@ -233,19 +233,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="獲得ポイント" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jj7-X7-1Yz">
-                                        <rect key="frame" x="126.5" y="10" width="67.5" height="13.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <rect key="frame" x="120.5" y="15.5" width="80" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxI-cU-kTg">
-                                        <rect key="frame" x="155" y="28.5" width="10.5" height="20.5"/>
+                                        <rect key="frame" x="155" y="33.5" width="10.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1i-Pi-Uty">
-                                        <rect key="frame" x="168.5" y="28.5" width="17" height="20.5"/>
+                                        <rect key="frame" x="168.5" y="33.5" width="17" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -264,9 +264,9 @@
                                     <constraint firstItem="jj7-X7-1Yz" firstAttribute="centerX" secondItem="Pc3-Of-H8B" secondAttribute="centerX" id="Ocj-n4-FkA"/>
                                     <constraint firstAttribute="trailing" secondItem="qSI-zq-Wag" secondAttribute="trailing" constant="8" id="WpS-A9-rTs"/>
                                     <constraint firstAttribute="height" constant="64" id="bA7-2z-q6c"/>
+                                    <constraint firstAttribute="bottom" secondItem="S1i-Pi-Uty" secondAttribute="bottom" constant="10" id="bMF-tJ-OVe"/>
+                                    <constraint firstItem="RxI-cU-kTg" firstAttribute="top" secondItem="jj7-X7-1Yz" secondAttribute="bottom" constant="2" id="bxg-6E-87U"/>
                                     <constraint firstItem="RxI-cU-kTg" firstAttribute="centerX" secondItem="Pc3-Of-H8B" secondAttribute="centerX" id="cEf-6L-FEn"/>
-                                    <constraint firstItem="RxI-cU-kTg" firstAttribute="top" secondItem="jj7-X7-1Yz" secondAttribute="bottom" constant="5" id="lxW-oi-ENK"/>
-                                    <constraint firstItem="jj7-X7-1Yz" firstAttribute="top" secondItem="Pc3-Of-H8B" secondAttribute="top" constant="10" id="nRC-GA-4sO"/>
                                     <constraint firstItem="S1i-Pi-Uty" firstAttribute="bottom" secondItem="RxI-cU-kTg" secondAttribute="bottom" id="ro9-bh-6kl"/>
                                     <constraint firstItem="qSI-zq-Wag" firstAttribute="centerY" secondItem="Pc3-Of-H8B" secondAttribute="centerY" id="rpr-5h-Znh"/>
                                     <constraint firstItem="RxI-cU-kTg" firstAttribute="centerX" secondItem="Pc3-Of-H8B" secondAttribute="centerX" id="uhc-DH-k5Y"/>
