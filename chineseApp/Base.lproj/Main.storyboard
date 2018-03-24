@@ -350,7 +350,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exr-OO-iU7" customClass="RoundedRectView" customModule="chineseApp" customModuleProvider="target">
-                                <rect key="frame" x="16" y="223" width="288" height="100"/>
+                                <rect key="frame" x="16" y="225" width="288" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ネコちゃんタイプ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCA-t0-rrs">
                                         <rect key="frame" x="86.5" y="6" width="114.5" height="17"/>
@@ -414,7 +414,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dn-JY-ChX" customClass="RoundedRectView" customModule="chineseApp" customModuleProvider="target">
-                                <rect key="frame" x="16" y="331" width="288" height="100"/>
+                                <rect key="frame" x="16" y="333" width="288" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="問題タイプ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqe-ZM-Zbh">
                                         <rect key="frame" x="111" y="6" width="66.5" height="16"/>
@@ -541,23 +541,20 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b2H-OC-5q1">
-                                <rect key="frame" x="0.0" y="80" width="320" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="1cC-WE-Rge"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="80" width="320" height="130"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ball1" translatesAutoresizingMaskIntoConstraints="NO" id="9aI-lz-mvX" customClass="SpringImageView" customModule="Spring">
-                                <rect key="frame" x="110" y="94" width="100" height="100"/>
+                                <rect key="frame" x="110" y="95" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9aI-lz-mvX" secondAttribute="height" multiplier="1:1" id="q1v-5f-pgm"/>
                                     <constraint firstAttribute="height" constant="100" id="v7K-zd-Y6W"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QyU-ms-5P3" customClass="SpringImageView" customModule="Spring">
-                                <rect key="frame" x="110" y="94" width="100" height="100"/>
+                                <rect key="frame" x="110" y="95" width="100" height="100"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opd-of-oC2" customClass="RoundedRectButton" customModule="chineseApp" customModuleProvider="target">
-                                <rect key="frame" x="32" y="441" width="256" height="50"/>
+                                <rect key="frame" x="32" y="443" width="256" height="50"/>
                                 <color key="backgroundColor" red="0.84043484930000001" green="0.21145355699999999" blue="0.2421452701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="qoo-b3-aq3"/>
@@ -602,6 +599,7 @@
                             <constraint firstItem="exr-OO-iU7" firstAttribute="top" secondItem="b2H-OC-5q1" secondAttribute="bottom" constant="15" id="1tf-KD-ZvC"/>
                             <constraint firstItem="7dn-JY-ChX" firstAttribute="height" secondItem="exr-OO-iU7" secondAttribute="height" id="2jX-Fs-vVH"/>
                             <constraint firstItem="QyU-ms-5P3" firstAttribute="height" secondItem="9aI-lz-mvX" secondAttribute="height" id="5G5-mj-2RK"/>
+                            <constraint firstItem="b2H-OC-5q1" firstAttribute="height" secondItem="HUM-gY-fTr" secondAttribute="height" multiplier="0.25" id="QzF-em-eWM"/>
                             <constraint firstItem="opd-of-oC2" firstAttribute="centerX" secondItem="HUM-gY-fTr" secondAttribute="centerX" id="T2a-X2-F19"/>
                             <constraint firstItem="AJe-vq-y0m" firstAttribute="centerX" secondItem="HUM-gY-fTr" secondAttribute="centerX" id="UXp-LV-gb8"/>
                             <constraint firstItem="QyU-ms-5P3" firstAttribute="centerX" secondItem="HUM-gY-fTr" secondAttribute="centerX" id="WGp-hs-PR3"/>
@@ -613,8 +611,8 @@
                             <constraint firstItem="9aI-lz-mvX" firstAttribute="centerY" secondItem="b2H-OC-5q1" secondAttribute="centerY" id="e8W-b5-McQ"/>
                             <constraint firstItem="QyU-ms-5P3" firstAttribute="centerY" secondItem="9aI-lz-mvX" secondAttribute="centerY" id="gfd-XF-96i"/>
                             <constraint firstItem="7dn-JY-ChX" firstAttribute="width" secondItem="exr-OO-iU7" secondAttribute="width" id="h8U-0J-L8a"/>
-                            <constraint firstItem="opd-of-oC2" firstAttribute="top" secondItem="7dn-JY-ChX" secondAttribute="bottom" constant="10" id="hXe-qf-UWn"/>
                             <constraint firstItem="9aI-lz-mvX" firstAttribute="centerX" secondItem="HUM-gY-fTr" secondAttribute="centerX" id="hg6-MB-zqx"/>
+                            <constraint firstItem="41Z-9n-qpV" firstAttribute="top" secondItem="opd-of-oC2" secondAttribute="bottom" constant="2" id="m1F-F0-TKJ"/>
                             <constraint firstItem="AJe-vq-y0m" firstAttribute="top" secondItem="HUM-gY-fTr" secondAttribute="top" id="n7b-iL-Nei"/>
                             <constraint firstItem="opd-of-oC2" firstAttribute="width" secondItem="HUM-gY-fTr" secondAttribute="width" multiplier="0.8" id="tda-tl-HLR"/>
                             <constraint firstItem="exr-OO-iU7" firstAttribute="centerX" secondItem="HUM-gY-fTr" secondAttribute="centerX" id="uDm-8l-bZH"/>
