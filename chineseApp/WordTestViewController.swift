@@ -13,6 +13,7 @@ import Spring
 
 class WordTestViewController: UIViewController{
     
+    @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var testWordLabel: UILabel!
     @IBOutlet weak var option1Button: RoundedRectButton!
     @IBOutlet weak var option2Button: RoundedRectButton!
@@ -24,7 +25,7 @@ class WordTestViewController: UIViewController{
     @IBOutlet weak var progressVIew: UIProgressView!
     @IBOutlet weak var pingyingLabel: UILabel!
     @IBOutlet weak var resultImageView: SpringImageView!
-    //    @IBOutlet weak var resultImageView: UIImageView!
+    
     let voice = AVSpeechSynthesisVoice(language: "zh-CN")
     let synthesizer = AVSpeechSynthesizer()
     var correctAudioPlayer:AVAudioPlayer!
@@ -66,7 +67,6 @@ class WordTestViewController: UIViewController{
         
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         nextButton.alpha = 0.7
-//        unClearVocabrary = realm.objects(WordObj.self).filter("sectionNumber == \(sectionNumber) AND clearCount < 5")
         
         
         if  let list = unClearVocabrary{
@@ -104,14 +104,19 @@ class WordTestViewController: UIViewController{
         if quizList.count == 0 {
             return
         }
-//        levelNumber = QuizManager.shared.level
+        
         let quiz = QuizManager()
+        
         quiz.level = levelNumber
         pointUnit = quiz.pointUnit
-        
+        bgImageView.image = QuizType(rawValue: sectionNumber)!.bgImage
         
         quizStart()
         
+    }
+    
+    @IBAction func closeButtonTapped(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func count(){
@@ -205,8 +210,6 @@ class WordTestViewController: UIViewController{
             synthesizer.speak(utterance)
             setAnswer(answerNumber: quizList.first!, answerWord: quizWord.meaning, answerRow: 1)
         }
-        
-        
     }
     
     
@@ -268,11 +271,6 @@ class WordTestViewController: UIViewController{
         //経過時間を止める
         timer.invalidate()
         
-//        self.resultImageView.alpha = 1
-//
-//        UIView.animate(withDuration: 1) {
-//            self.resultImageView.transform = CGAffineTransform.init(scaleX: 1.4, y: 1.4)
-//        }
         resultImageView.animation = "fadeIn"
         resultImageView.animate()
         
@@ -408,22 +406,5 @@ class WordTestViewController: UIViewController{
         fail()
         answerFinish()
     }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -544,14 +544,13 @@
                                 <rect key="frame" x="0.0" y="80" width="320" height="130"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ball1" translatesAutoresizingMaskIntoConstraints="NO" id="9aI-lz-mvX" customClass="SpringImageView" customModule="Spring">
-                                <rect key="frame" x="110" y="95" width="100" height="100"/>
+                                <rect key="frame" x="95" y="80" width="130" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9aI-lz-mvX" secondAttribute="height" multiplier="1:1" id="q1v-5f-pgm"/>
-                                    <constraint firstAttribute="height" constant="100" id="v7K-zd-Y6W"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QyU-ms-5P3" customClass="SpringImageView" customModule="Spring">
-                                <rect key="frame" x="110" y="95" width="100" height="100"/>
+                                <rect key="frame" x="95" y="80" width="130" height="130"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opd-of-oC2" customClass="RoundedRectButton" customModule="chineseApp" customModuleProvider="target">
                                 <rect key="frame" x="32" y="443" width="256" height="50"/>
@@ -612,6 +611,7 @@
                             <constraint firstItem="QyU-ms-5P3" firstAttribute="centerY" secondItem="9aI-lz-mvX" secondAttribute="centerY" id="gfd-XF-96i"/>
                             <constraint firstItem="7dn-JY-ChX" firstAttribute="width" secondItem="exr-OO-iU7" secondAttribute="width" id="h8U-0J-L8a"/>
                             <constraint firstItem="9aI-lz-mvX" firstAttribute="centerX" secondItem="HUM-gY-fTr" secondAttribute="centerX" id="hg6-MB-zqx"/>
+                            <constraint firstItem="b2H-OC-5q1" firstAttribute="height" secondItem="9aI-lz-mvX" secondAttribute="height" id="jgs-zo-WfR"/>
                             <constraint firstItem="41Z-9n-qpV" firstAttribute="top" secondItem="opd-of-oC2" secondAttribute="bottom" constant="2" id="m1F-F0-TKJ"/>
                             <constraint firstItem="AJe-vq-y0m" firstAttribute="top" secondItem="HUM-gY-fTr" secondAttribute="top" id="n7b-iL-Nei"/>
                             <constraint firstItem="opd-of-oC2" firstAttribute="width" secondItem="HUM-gY-fTr" secondAttribute="width" multiplier="0.8" id="tda-tl-HLR"/>
