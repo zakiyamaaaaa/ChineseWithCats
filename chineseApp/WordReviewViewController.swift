@@ -61,6 +61,11 @@ class WordReviewViewController: UIViewController {
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        timer.invalidate()
+        quizList = []
+    }
+    
     func quizStart(reviewWord:LearnHistory){
         //プログラスビューのリセット
         quizNumberLabel.text = "\(numberOfAnswer + 1)/\(numberOfQuiz)"

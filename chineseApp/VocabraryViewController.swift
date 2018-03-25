@@ -20,7 +20,7 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
     }
     
     // navBarの高さを固定にするピンフラグ
-    var isPin = true
+    var isPin = false
     let pinAlpha:CGFloat = 0.5
     let synthesizer = AVSpeechSynthesizer()
     let voice = AVSpeechSynthesisVoice(language: "zh-CN")
@@ -32,7 +32,7 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
     var defaultNavHeight: CGFloat!
     @IBOutlet weak var myTableView: UITableView!
     var words = Vocabrary()
-    var yFlag = false
+    var yFlag = true
     @IBOutlet weak var wordSegment: UISegmentedControl!
     
     var unClearVocabrary:Results<WordObj>?
@@ -43,6 +43,7 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
     var scrollBeginingPoint: CGPoint!
     var snapAnimator:UIDynamicAnimator!
     var snapBehavior:UISnapBehavior!
+    var buttonPostion:CGPoint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,11 +53,13 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
         
         pinButton.alpha = pinAlpha
         defaultNavHeight = navViewHeightConstraint.constant
+        buttonPostion = pinButton.center
         
         let dragGesture = UIPanGestureRecognizer(target: self, action: #selector(self.draggedButton(sender:)))
         pinButton.addGestureRecognizer(dragGesture)
         // Do any additional setup after loading the view.
     }
+    
     
     @objc func draggedButton(sender: UIPanGestureRecognizer) {
         
@@ -67,8 +70,9 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
         let move = sender.translation(in: view)
         sender.view?.center.x += move.x
         sender.view?.center.y += move.y
-        
+        buttonPostion = sender.view?.center
         sender.setTranslation(.zero, in: view)
+        
     }
     
     
