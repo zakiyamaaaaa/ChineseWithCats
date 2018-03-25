@@ -195,12 +195,11 @@
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRQ-OM-FyV">
                                                     <rect key="frame" x="150" y="44" width="30" height="30"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="bRQ-OM-FyV" secondAttribute="height" multiplier="1:1" id="DJ5-fp-Cyx"/>
                                                         <constraint firstAttribute="height" constant="30" id="tgP-3X-1NS"/>
                                                     </constraints>
-                                                    <state key="normal" image="voicebutton_2"/>
+                                                    <state key="normal" image="voicebutton"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -536,9 +535,9 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dw0-NT-VCq">
-                                        <rect key="frame" x="169" y="73" width="113" height="24"/>
+                                        <rect key="frame" x="190" y="73" width="92" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <state key="normal" title="ステージの種類について">
+                                        <state key="normal" title="問題の種類について">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
@@ -929,20 +928,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="86.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1vB-j3-Dwj">
-                                                    <rect key="frame" x="15" y="14" width="30" height="30"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1vB-j3-Dwj">
+                                                    <rect key="frame" x="15" y="14" width="20" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="Gke-aj-QaK"/>
-                                                        <constraint firstAttribute="width" constant="30" id="swL-vj-W9M"/>
+                                                        <constraint firstAttribute="height" constant="20" id="Gke-aj-QaK"/>
+                                                        <constraint firstAttribute="width" constant="20" id="swL-vj-W9M"/>
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8gt-aY-utx">
-                                                    <rect key="frame" x="59" y="14" width="44.5" height="59.5"/>
+                                                    <rect key="frame" x="49" y="14" width="44.5" height="59.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PI8-tE-JlJ">
                                                             <rect key="frame" x="0.0" y="0.0" width="44.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                            <color key="textColor" red="0.84043484930000001" green="0.21145355699999999" blue="0.2421452701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJx-Ta-pPQ">
@@ -967,12 +966,11 @@
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDL-Wh-1GU">
                                                     <rect key="frame" x="210" y="28.5" width="30" height="30"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="2LJ-A7-H6J"/>
                                                         <constraint firstAttribute="width" constant="30" id="wte-bB-vhV"/>
                                                     </constraints>
-                                                    <state key="normal" image="voicebutton_2"/>
+                                                    <state key="normal" image="voicebutton"/>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6E3-fW-EIL">
                                                     <rect key="frame" x="255" y="20" width="50" height="30"/>
@@ -982,15 +980,14 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88r-tw-F86">
-                                                    <rect key="frame" x="272" y="56.5" width="33" height="16"/>
+                                                    <rect key="frame" x="263.5" y="53" width="33" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.84043484930000001" green="0.21145355699999999" blue="0.2421452701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="88r-tw-F86" firstAttribute="top" secondItem="6E3-fW-EIL" secondAttribute="bottom" constant="6.5" id="7IJ-19-Zdr"/>
-                                                <constraint firstItem="88r-tw-F86" firstAttribute="trailing" secondItem="6E3-fW-EIL" secondAttribute="trailing" id="GSg-2P-skT"/>
+                                                <constraint firstItem="88r-tw-F86" firstAttribute="top" secondItem="6E3-fW-EIL" secondAttribute="bottom" constant="3" id="7IJ-19-Zdr"/>
                                                 <constraint firstItem="XDL-Wh-1GU" firstAttribute="centerY" secondItem="fII-0h-wEy" secondAttribute="centerY" id="P1o-oO-KIQ"/>
                                                 <constraint firstItem="8gt-aY-utx" firstAttribute="top" secondItem="1vB-j3-Dwj" secondAttribute="top" id="SEp-BH-Kaa"/>
                                                 <constraint firstItem="6E3-fW-EIL" firstAttribute="leading" secondItem="XDL-Wh-1GU" secondAttribute="trailing" constant="15" id="SUq-gn-S2Z"/>
@@ -998,10 +995,10 @@
                                                 <constraint firstItem="1vB-j3-Dwj" firstAttribute="leading" secondItem="fII-0h-wEy" secondAttribute="leading" constant="15" id="aM4-E5-BAn"/>
                                                 <constraint firstItem="8gt-aY-utx" firstAttribute="leading" secondItem="1vB-j3-Dwj" secondAttribute="trailing" constant="14" id="bFU-De-3P1"/>
                                                 <constraint firstAttribute="trailing" secondItem="6E3-fW-EIL" secondAttribute="trailing" constant="15" id="kKS-gm-eIm"/>
+                                                <constraint firstItem="88r-tw-F86" firstAttribute="centerX" secondItem="6E3-fW-EIL" secondAttribute="centerX" id="rdX-w0-u02"/>
                                                 <constraint firstItem="8gt-aY-utx" firstAttribute="centerY" secondItem="fII-0h-wEy" secondAttribute="centerY" id="xhU-DQ-zYY"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="dateImageView" destination="6E3-fW-EIL" id="8WE-vY-70g"/>
                                             <outlet property="levelLabel" destination="88r-tw-F86" id="QDx-nI-Ee2"/>
@@ -1486,7 +1483,7 @@
         <image name="pin" width="123" height="123"/>
         <image name="screen01" width="320" height="523"/>
         <image name="screen02" width="320" height="523"/>
-        <image name="voicebutton_2" width="50" height="50"/>
+        <image name="voicebutton" width="50" height="50"/>
         <image name="windIcon" width="44" height="44"/>
     </resources>
 </document>

@@ -43,13 +43,7 @@ class ReviewResultViewController: UIViewController,UITableViewDataSource{
         let words = quizList2[indexPath.row]
         cell.secondLabel.text = words.word
         
-        //正解・不正解を結果のアイコン
-        switch scoreList[indexPath.row] {
-        case true:
-            cell.resultImageView.image = #imageLiteral(resourceName: "correct_icon")
-        case false:
-            cell.resultImageView.image = #imageLiteral(resourceName: "wrong_icon")
-        }
+        cell.resultImageView.image = scoreList[indexPath.row] ? #imageLiteral(resourceName: "correctIcon") : #imageLiteral(resourceName: "incorrectIcon")
         
         return cell
     }

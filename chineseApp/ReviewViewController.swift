@@ -120,13 +120,7 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
             cell.dateImageView.image = DateType(rawValue: difference)!.image
         }
         
-        
-        switch word.result {
-        case false:
-            cell.resultImageView.image = #imageLiteral(resourceName: "wrong_icon")
-        case true:
-            cell.resultImageView.image = #imageLiteral(resourceName: "correct_icon")
-        }
+        cell.resultImageView.image = word.result ? #imageLiteral(resourceName: "correctIcon") : #imageLiteral(resourceName: "incorrectIcon")
         
         return cell
         
