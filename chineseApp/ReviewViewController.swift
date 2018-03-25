@@ -109,7 +109,7 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
             return cell
         }
         cell.soundButton.addTarget(self, action: #selector(self.speechWord(sender:)), for: .touchUpInside)
-        cell.levelLabel.text = "レベル" + String(word.level)
+        cell.levelLabel.text = QuizType(rawValue: word.level)!.typeTitle + "タイプ" 
         cell.soundButton.tag = indexPath.row
         cell.wordLabel.text = word.word
         cell.pinyinLabel.text = word.pinyin

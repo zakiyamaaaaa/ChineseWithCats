@@ -31,6 +31,21 @@ enum QuizType: Int {
         }
     }
     
+    var typeTitle: String {
+        switch self{
+        case .level1:
+            return "風"
+        case .level2:
+            return "林"
+        case .level3:
+            return "火"
+        case .level4:
+            return "山"
+        case .level5:
+            return "水"
+        }
+    }
+    
     var iconImage: UIImage {
         switch self {
         case .level1:
