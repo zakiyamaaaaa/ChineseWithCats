@@ -126,6 +126,11 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         guard let words = histryWordList else { return }
         
+        if indexPath.row == words.count || (UserDefaults.standard.bool(forKey: "purchased") == false && indexPath.row == 9 ){
+            // 課金画面
+            purchase()
+            return
+        }
         
         let word = words[indexPath.row].word
         let meaning = words[indexPath.row].meaning
@@ -258,8 +263,11 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     @IBAction func upgradeButtonPushed(_ sender: Any) {
         
+            }
+    
+    private func purchase() {
         SwiftyStoreKit.purchaseProduct("com.zakiyamaaaaa.chinesewithcats") { (result) in
-
+            
             if case .success(let purchase) = result{
                 if purchase.needsFinishTransaction{
                     SwiftyStoreKit.finishTransaction(purchase.transaction)
@@ -277,10 +285,9 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
             case .error(let error):
                 print("error")
                 print(error.code)
-
+                
             }
         }
-        
     }
     
     @IBAction func restoreButtonPushed(_ sender: Any) {
