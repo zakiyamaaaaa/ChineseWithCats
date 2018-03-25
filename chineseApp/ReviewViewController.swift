@@ -51,17 +51,37 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if let check = histryWordList{
-            return check.count
-        }
+        guard let wordCount = histryWordList?.count else { return 0 }
         
-        return 0
+        let isPurchased = UserDefaults.standard.bool(forKey: "purchased")
+
+        if isPurchased == true && wordCount > 9 {
+            return histryWordList?.count ?? 0
+        } else if isPurchased == false && wordCount > 10 {
+            return 9 + 1
+        } else {
+            return wordCount + 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myTableView.dequeueReusableCell(withIdentifier: "reviewCell") as! ReviewWordTableViewCell
         
+        guard let wordList = histryWordList else { return cell }
+        
         guard let word = histryWordList?[indexPath.row] else { return  cell}
+        if UserDefaults.standard.bool(forKey: "purchased") == false && (indexPath.row == wordList.count + 1 || indexPath.row == 9){
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "機能追加する\n  学習履歴が１０個以上表示されます"
+            cell.textLabel?.numberOfLines = 2
+            let textArray = cell.textLabel?.text?.components(separatedBy: "\n")
+            let attrText = NSMutableAttributedString(string: cell.textLabel!.text!)
+            let range = NSString(string: cell.textLabel!.text!).range(of: textArray![1])
+            attrText.addAttribute(.font, value: UIFont.systemFont(ofSize: 11), range:range)
+            cell.textLabel?.attributedText = attrText
+            
+            return cell
+        }
         cell.soundButton.addTarget(self, action: #selector(self.speechWord(sender:)), for: .touchUpInside)
         cell.levelLabel.text = "レベル" + String(word.level)
         cell.soundButton.tag = indexPath.row
@@ -235,10 +255,6 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     @IBAction func upgradeButtonPushed(_ sender: Any) {
-//        purchase(purchase: .nonConcumeblae)
-//        let productID = IAPProduct.nonConcumeblae.rawValue
-//
-//        IAPService.shared.purchase(product: .nonConcumeblae)
         
         SwiftyStoreKit.purchaseProduct("com.zakiyamaaaaa.chinesewithcats") { (result) in
 
