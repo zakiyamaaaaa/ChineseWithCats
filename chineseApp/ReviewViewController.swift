@@ -12,6 +12,30 @@ import SwiftyStoreKit
 import AVFoundation
 
 class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
+    
+    enum DateType: Int {
+        case today
+        case yesterday
+        case threeDays
+        case aweek
+        case amounth
+        
+        var image: UIImage {
+            switch self {
+            case .today :
+                return #imageLiteral(resourceName: "date0")
+            case .yesterday:
+                return #imageLiteral(resourceName: "date1")
+            case .threeDays:
+                return #imageLiteral(resourceName: "date3")
+            case .aweek:
+                return #imageLiteral(resourceName: "date7")
+            case .amounth:
+                return #imageLiteral(resourceName: "date30")
+            }
+        }
+    }
+    
     let synthesizer = AVSpeechSynthesizer()
     let voice = AVSpeechSynthesisVoice(language: "zh-CN")
     @IBOutlet weak var myTableView: UITableView!
@@ -91,10 +115,9 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
         cell.pinyinLabel.text = word.pinyin
         cell.sentenseLabel.text = word.sentence
         if let difference = calculateDate(time: word.date).day{
-            cell.dateLabel.text = String(describing: difference) + "日前"
-            if difference == 0{
-                cell.dateLabel.text = "今日"
-            }
+//            cell.dateLabel.text = String(describing: difference) + "日前"
+            
+            cell.dateImageView.image = DateType(rawValue: difference)!.image
         }
         
         
