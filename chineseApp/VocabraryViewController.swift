@@ -20,7 +20,7 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
     }
     
     // navBarの高さを固定にするピンフラグ
-    var isPin = false
+    var isPin = true
     let pinAlpha:CGFloat = 0.5
     let synthesizer = AVSpeechSynthesizer()
     let voice = AVSpeechSynthesisVoice(language: "zh-CN")
