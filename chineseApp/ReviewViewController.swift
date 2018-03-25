@@ -76,8 +76,10 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
             cell.textLabel?.numberOfLines = 2
             let textArray = cell.textLabel?.text?.components(separatedBy: "\n")
             let attrText = NSMutableAttributedString(string: cell.textLabel!.text!)
-            let range = NSString(string: cell.textLabel!.text!).range(of: textArray![1])
-            attrText.addAttribute(.font, value: UIFont.systemFont(ofSize: 11), range:range)
+            let supplirange = NSString(string: cell.textLabel!.text!).range(of: textArray![1])
+            let mainrange = NSString(string: cell.textLabel!.text!).range(of: textArray![0])
+            attrText.addAttribute(.font, value: UIFont.systemFont(ofSize: 11), range:supplirange)
+            attrText.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 15), range:mainrange)
             cell.textLabel?.attributedText = attrText
             
             return cell
@@ -296,15 +298,6 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
             }
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -529,3 +522,4 @@ extension ReviewViewController: UIScrollViewDelegate {
     }
     
 }
+
