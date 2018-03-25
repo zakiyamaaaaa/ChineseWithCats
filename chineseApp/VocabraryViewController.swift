@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import AVFoundation
+import SwiftyStoreKit
 
 class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
@@ -117,7 +118,6 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
         
         switch wordSegment.selectedSegmentIndex {
         case 0:
-            
             return vocabrary?.count ?? 0
         case 1:
             
@@ -243,7 +243,50 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     @IBAction func displaySegmentChanged(_ sender: UISegmentedControl) {
         
+        if UserDefaults.standard.bool(forKey: "purchased") == false {
+            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                self.purchase()
+            })
+            
+            let cancel = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+            ok.setValue(UIColor.mainColor(), forKey: "titleTextColor")
+            cancel.setValue(UIColor.offColor(), forKey: "titleTextColor")
+            alert.addImage(image: #imageLiteral(resourceName: "purchaseImg"))
+            alert.addAction(ok)
+            alert.addAction(cancel)
+            self.present(alert, animated: true, completion: nil)
+            self.undisplaySementedControl.selectedSegmentIndex = 0
+            return
+        }
+        
+        
         myTableView.reloadData()
+    }
+    
+    private func purchase() {
+        SwiftyStoreKit.purchaseProduct("com.zakiyamaaaaa.chinesewithcats") { (result) in
+            
+            if case .success(let purchase) = result{
+                if purchase.needsFinishTransaction{
+                    SwiftyStoreKit.finishTransaction(purchase.transaction)
+                }
+            }
+            switch result{
+            case .success(let purchase):
+                
+                print("purchase:\(purchase.productId)")
+                let ud = UserDefaults.standard
+                ud.set(true, forKey: "purchased")
+                ud.synchronize()
+                self.myTableView.reloadData()
+                
+            case .error(let error):
+                print("error")
+                print(error.code)
+                
+            }
+        }
     }
 
     func segementChanged(){
