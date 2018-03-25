@@ -135,7 +135,8 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
             })
             
             let cancel = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
-            
+            ok.setValue(UIColor.mainColor(), forKey: "titleTextColor")
+            cancel.setValue(UIColor.offColor(), forKey: "titleTextColor")
             alert.addImage(image: #imageLiteral(resourceName: "purchaseImg"))
             alert.addAction(ok)
             alert.addAction(cancel)

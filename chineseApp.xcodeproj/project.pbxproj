@@ -32,6 +32,7 @@
 		391844C92065FCC100E482F3 /* RoundedRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391844C82065FCC100E482F3 /* RoundedRectView.swift */; };
 		391844CD20672AA700E482F3 /* AlertController+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391844CC20672AA700E482F3 /* AlertController+Image.swift */; };
 		391844CF20672BE100E482F3 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391844CE20672BE100E482F3 /* UIImage+Resize.swift */; };
+		391844D12067328D00E482F3 /* UIColor+ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391844D02067328D00E482F3 /* UIColor+ColorSet.swift */; };
 		3929359F1F92FF2F00AEC379 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3929359E1F92FEF600AEC379 /* GoogleService-Info.plist */; };
 		3929A1961F53FDF700F79823 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929A1951F53FDF700F79823 /* AppDelegate.swift */; };
 		3929A1981F53FDF700F79823 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929A1971F53FDF700F79823 /* ViewController.swift */; };
@@ -118,6 +119,7 @@
 		391844C82065FCC100E482F3 /* RoundedRectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectView.swift; sourceTree = "<group>"; };
 		391844CC20672AA700E482F3 /* AlertController+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertController+Image.swift"; sourceTree = "<group>"; };
 		391844CE20672BE100E482F3 /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
+		391844D02067328D00E482F3 /* UIColor+ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ColorSet.swift"; sourceTree = "<group>"; };
 		3929359E1F92FEF600AEC379 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3929A1921F53FDF700F79823 /* chineseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chineseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3929A1951F53FDF700F79823 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				391844C82065FCC100E482F3 /* RoundedRectView.swift */,
 				391844CC20672AA700E482F3 /* AlertController+Image.swift */,
 				391844CE20672BE100E482F3 /* UIImage+Resize.swift */,
+				391844D02067328D00E482F3 /* UIColor+ColorSet.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -747,6 +750,7 @@
 				396060A51F6151DF00A643AA /* QuizManager.swift in Sources */,
 				391145A81F8313DF00AA3C8C /* LevelChangedViewController.swift in Sources */,
 				39A175761F598A8C00526C1B /* ClearedViewController.swift in Sources */,
+				391844D12067328D00E482F3 /* UIColor+ColorSet.swift in Sources */,
 				395712201F90554A0021E380 /* NetworkActivityIndicatorManager.swift in Sources */,
 				396060A31F614FB200A643AA /* ScreenTransitionManager.swift in Sources */,
 				391844CF20672BE100E482F3 /* UIImage+Resize.swift in Sources */,
