@@ -131,7 +131,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O9M-2Y-nDF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="190" height="117.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="186" height="117.5"/>
                                                     <color key="backgroundColor" red="0.84043484930000001" green="0.21145355699999999" blue="0.2421452701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lw9-5N-XE0">
@@ -206,7 +206,7 @@
                                                 <constraint firstItem="HAY-qZ-Ql4" firstAttribute="top" secondItem="bRQ-OM-FyV" secondAttribute="top" id="3kS-Kf-y3J"/>
                                                 <constraint firstItem="HAY-qZ-Ql4" firstAttribute="leading" secondItem="bRQ-OM-FyV" secondAttribute="trailing" constant="10" id="Axm-Dn-6Qb"/>
                                                 <constraint firstItem="O9M-2Y-nDF" firstAttribute="leading" secondItem="pHg-wQ-PJI" secondAttribute="leading" id="IoZ-mb-CTw"/>
-                                                <constraint firstItem="bRQ-OM-FyV" firstAttribute="trailing" secondItem="O9M-2Y-nDF" secondAttribute="trailing" constant="-10" id="O1K-du-Mhq"/>
+                                                <constraint firstItem="bRQ-OM-FyV" firstAttribute="trailing" secondItem="O9M-2Y-nDF" secondAttribute="trailing" constant="-6" id="O1K-du-Mhq"/>
                                                 <constraint firstAttribute="trailing" secondItem="HAY-qZ-Ql4" secondAttribute="trailing" constant="10" id="OwH-Ic-Q2d"/>
                                                 <constraint firstItem="O9M-2Y-nDF" firstAttribute="leading" secondItem="pHg-wQ-PJI" secondAttribute="leading" id="SoT-gH-SYO"/>
                                                 <constraint firstItem="lw9-5N-XE0" firstAttribute="leading" secondItem="pHg-wQ-PJI" secondAttribute="leading" constant="15" id="W0R-Pg-4x8"/>
@@ -917,8 +917,15 @@
                                     <action selector="reviewButtonPushed:" destination="Hwf-PR-sdg" eventType="touchUpInside" id="ZSf-fL-K2i"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vZk-J0-xi1">
+                                <rect key="frame" x="0.0" y="468" width="320" height="1"/>
+                                <color key="backgroundColor" red="0.84043484930000001" green="0.21145355699999999" blue="0.2421452701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="oaq-qZ-Nyv"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="87" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YYW-TG-6KN">
-                                <rect key="frame" x="0.0" y="168" width="320" height="301"/>
+                                <rect key="frame" x="0.0" y="168" width="320" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reviewCell" rowHeight="87" id="SI8-Rz-sm7" customClass="ReviewWordTableViewCell" customModule="chineseApp" customModuleProvider="target">
@@ -1088,12 +1095,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="vZk-J0-xi1" firstAttribute="top" secondItem="YYW-TG-6KN" secondAttribute="bottom" id="1mC-pW-LNY"/>
                             <constraint firstItem="g5q-nn-47z" firstAttribute="top" secondItem="T4f-Dk-Qff" secondAttribute="bottom" id="E4T-OM-zDZ"/>
-                            <constraint firstItem="Cgq-v3-gAz" firstAttribute="top" secondItem="YYW-TG-6KN" secondAttribute="bottom" id="E5k-LG-0ty"/>
+                            <constraint firstItem="Cgq-v3-gAz" firstAttribute="top" secondItem="vZk-J0-xi1" secondAttribute="bottom" id="EVt-nR-U4y"/>
                             <constraint firstItem="Cgq-v3-gAz" firstAttribute="leading" secondItem="M9T-vG-bT3" secondAttribute="leading" id="FlN-mJ-Q1w"/>
                             <constraint firstItem="f6M-ox-OjF" firstAttribute="top" secondItem="dJp-MA-UEl" secondAttribute="bottom" id="J3q-DN-sdX"/>
                             <constraint firstItem="YYW-TG-6KN" firstAttribute="leading" secondItem="M9T-vG-bT3" secondAttribute="leading" id="NJy-6P-ruQ"/>
+                            <constraint firstAttribute="trailing" secondItem="vZk-J0-xi1" secondAttribute="trailing" id="SPM-lE-lmA"/>
                             <constraint firstItem="g5q-nn-47z" firstAttribute="leading" secondItem="M9T-vG-bT3" secondAttribute="leading" id="ZYy-91-3oM"/>
+                            <constraint firstItem="vZk-J0-xi1" firstAttribute="leading" secondItem="M9T-vG-bT3" secondAttribute="leading" id="eUy-0N-OwZ"/>
                             <constraint firstAttribute="trailing" secondItem="Cgq-v3-gAz" secondAttribute="trailing" id="ec3-Wg-4gc"/>
                             <constraint firstAttribute="trailing" secondItem="dJp-MA-UEl" secondAttribute="trailing" id="hib-Ay-vv3"/>
                             <constraint firstAttribute="trailing" secondItem="YYW-TG-6KN" secondAttribute="trailing" id="kHM-tv-hHF"/>

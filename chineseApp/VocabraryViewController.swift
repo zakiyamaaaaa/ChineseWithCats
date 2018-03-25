@@ -40,8 +40,9 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
     var vocabrary:Results<WordObj>?
     var wordQueue:Results<WordObj>?
     var sectionSegmentNumber = 0
-    
     var scrollBeginingPoint: CGPoint!
+    var snapAnimator:UIDynamicAnimator!
+    var snapBehavior:UISnapBehavior!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,23 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
         
         pinButton.alpha = pinAlpha
         defaultNavHeight = navViewHeightConstraint.constant
+        
+        let dragGesture = UIPanGestureRecognizer(target: self, action: #selector(self.draggedButton(sender:)))
+        pinButton.addGestureRecognizer(dragGesture)
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func draggedButton(sender: UIPanGestureRecognizer) {
+        
+        if sender.view!.frame.maxY >= self.view.frame.height - 2 {
+            sender.view?.center.y -= 1
+            return
+        }
+        let move = sender.translation(in: view)
+        sender.view?.center.x += move.x
+        sender.view?.center.y += move.y
+        
+        sender.setTranslation(.zero, in: view)
     }
     
     
