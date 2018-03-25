@@ -131,7 +131,7 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
             
             let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                
+                self.purchase()
             })
             
             let cancel = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
@@ -141,7 +141,6 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
             alert.addAction(ok)
             alert.addAction(cancel)
             self.present(alert, animated: true, completion: nil)
-//            purchase()
             return
         }
         
@@ -294,6 +293,7 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
                 ud.set(true, forKey: "purchased")
                 ud.synchronize()
                 self.upgradeView.isHidden = true
+                self.myTableView.reloadData()
                 
             case .error(let error):
                 print("error")
