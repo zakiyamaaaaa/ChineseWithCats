@@ -128,7 +128,19 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         if indexPath.row == words.count || (UserDefaults.standard.bool(forKey: "purchased") == false && indexPath.row == 9 ){
             // 課金画面
-            purchase()
+            
+            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                
+            })
+            
+            let cancel = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+            
+            alert.addImage(image: #imageLiteral(resourceName: "purchaseImg"))
+            alert.addAction(ok)
+            alert.addAction(cancel)
+            self.present(alert, animated: true, completion: nil)
+//            purchase()
             return
         }
         

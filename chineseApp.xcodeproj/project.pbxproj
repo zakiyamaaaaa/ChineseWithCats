@@ -30,6 +30,8 @@
 		391145EC1F876E6600AA3C8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 391145EB1F876E6600AA3C8C /* Assets.xcassets */; };
 		391146011F88F24700AA3C8C /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391146001F88F24700AA3C8C /* DescriptionViewController.swift */; };
 		391844C92065FCC100E482F3 /* RoundedRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391844C82065FCC100E482F3 /* RoundedRectView.swift */; };
+		391844CD20672AA700E482F3 /* AlertController+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391844CC20672AA700E482F3 /* AlertController+Image.swift */; };
+		391844CF20672BE100E482F3 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391844CE20672BE100E482F3 /* UIImage+Resize.swift */; };
 		3929359F1F92FF2F00AEC379 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3929359E1F92FEF600AEC379 /* GoogleService-Info.plist */; };
 		3929A1961F53FDF700F79823 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929A1951F53FDF700F79823 /* AppDelegate.swift */; };
 		3929A1981F53FDF700F79823 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929A1971F53FDF700F79823 /* ViewController.swift */; };
@@ -114,6 +116,8 @@
 		391145EB1F876E6600AA3C8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		391146001F88F24700AA3C8C /* DescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		391844C82065FCC100E482F3 /* RoundedRectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectView.swift; sourceTree = "<group>"; };
+		391844CC20672AA700E482F3 /* AlertController+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertController+Image.swift"; sourceTree = "<group>"; };
+		391844CE20672BE100E482F3 /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		3929359E1F92FEF600AEC379 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3929A1921F53FDF700F79823 /* chineseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chineseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3929A1951F53FDF700F79823 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -257,6 +261,8 @@
 			isa = PBXGroup;
 			children = (
 				391844C82065FCC100E482F3 /* RoundedRectView.swift */,
+				391844CC20672AA700E482F3 /* AlertController+Image.swift */,
+				391844CE20672BE100E482F3 /* UIImage+Resize.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -727,6 +733,7 @@
 				39A1757A1F5995EE00526C1B /* WordTestViewController.swift in Sources */,
 				391145571F7D0B4100AA3C8C /* LearnHistory.swift in Sources */,
 				391145A61F82922000AA3C8C /* SecondTestViewController.swift in Sources */,
+				391844CD20672AA700E482F3 /* AlertController+Image.swift in Sources */,
 				3929A1961F53FDF700F79823 /* AppDelegate.swift in Sources */,
 				391145621F7FA26200AA3C8C /* AudioPlayer.swift in Sources */,
 				3929A1C41F54006900F79823 /* VocabraryViewController.swift in Sources */,
@@ -742,6 +749,7 @@
 				39A175761F598A8C00526C1B /* ClearedViewController.swift in Sources */,
 				395712201F90554A0021E380 /* NetworkActivityIndicatorManager.swift in Sources */,
 				396060A31F614FB200A643AA /* ScreenTransitionManager.swift in Sources */,
+				391844CF20672BE100E482F3 /* UIImage+Resize.swift in Sources */,
 				39A175741F583A0000526C1B /* Vocabrary.swift in Sources */,
 				391145551F7D0A9C00AA3C8C /* User.swift in Sources */,
 				3911455B1F7D169800AA3C8C /* UserManager.swift in Sources */,
