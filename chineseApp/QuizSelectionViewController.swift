@@ -71,6 +71,37 @@ class QuizSelectionViewController: UIViewController {
         bgImageView.image = QuizType.level1.bgImage
     }
     
+    @IBAction func quizTypeTutorial(_ sender: UIButton) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            
+        })
+        
+        
+        ok.setValue(UIColor.mainColor(), forKey: "titleTextColor")
+        
+        alert.addImage(image: #imageLiteral(resourceName: "tutorial_stage"))
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func stageTypeTutorial(_ sender: UIButton) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            
+        })
+        
+        
+        ok.setValue(UIColor.mainColor(), forKey: "titleTextColor")
+        
+        alert.addImage(image: #imageLiteral(resourceName: "tutorial_type"))
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
     @objc func levelButtonPushed(sender:UIButton){
         
         for button in levelButtonList{

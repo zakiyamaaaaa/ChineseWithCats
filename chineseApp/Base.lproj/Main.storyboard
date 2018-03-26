@@ -457,6 +457,9 @@
                                         <state key="normal" title="ステージの種類について">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="quizTypeTutorial:" destination="BYY-aN-hSH" eventType="touchUpInside" id="hGA-XS-JcW"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -549,6 +552,9 @@
                                         <state key="normal" title="問題の種類について">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="stageTypeTutorial:" destination="BYY-aN-hSH" eventType="touchUpInside" id="tS4-at-Vkf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -631,7 +637,7 @@
                                 <rect key="frame" x="95" y="80" width="130" height="130"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opd-of-oC2" customClass="RoundedRectButton" customModule="chineseApp" customModuleProvider="target">
-                                <rect key="frame" x="32" y="443" width="256" height="50"/>
+                                <rect key="frame" x="16" y="443" width="288" height="50"/>
                                 <color key="backgroundColor" red="0.84043484930000001" green="0.21145355699999999" blue="0.2421452701" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="qoo-b3-aq3"/>
@@ -658,9 +664,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="41Z-9n-qpV">
-                                <rect key="frame" x="226" y="495" width="72" height="24"/>
+                                <rect key="frame" x="267" y="495" width="31" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <state key="normal" title="アプリの遊び方">
+                                <state key="normal" title="遊び方">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -692,8 +698,8 @@
                             <constraint firstItem="b2H-OC-5q1" firstAttribute="height" secondItem="9aI-lz-mvX" secondAttribute="height" id="jgs-zo-WfR"/>
                             <constraint firstItem="41Z-9n-qpV" firstAttribute="top" secondItem="opd-of-oC2" secondAttribute="bottom" constant="2" id="m1F-F0-TKJ"/>
                             <constraint firstItem="AJe-vq-y0m" firstAttribute="top" secondItem="HUM-gY-fTr" secondAttribute="top" id="n7b-iL-Nei"/>
-                            <constraint firstItem="opd-of-oC2" firstAttribute="width" secondItem="HUM-gY-fTr" secondAttribute="width" multiplier="0.8" id="tda-tl-HLR"/>
                             <constraint firstItem="exr-OO-iU7" firstAttribute="centerX" secondItem="HUM-gY-fTr" secondAttribute="centerX" id="uDm-8l-bZH"/>
+                            <constraint firstItem="opd-of-oC2" firstAttribute="leading" secondItem="7dn-JY-ChX" secondAttribute="leading" id="yYQ-yZ-ITC"/>
                             <constraint firstItem="b2H-OC-5q1" firstAttribute="top" secondItem="AJe-vq-y0m" secondAttribute="bottom" id="zdV-vF-aT1"/>
                             <constraint firstItem="exr-OO-iU7" firstAttribute="leading" secondItem="HUM-gY-fTr" secondAttribute="leading" constant="16" id="ziT-pq-kBn"/>
                             <constraint firstItem="QyU-ms-5P3" firstAttribute="width" secondItem="9aI-lz-mvX" secondAttribute="width" id="zyR-WC-xRr"/>
@@ -1499,7 +1505,7 @@
         <image name="footer-1_30" width="54" height="54"/>
         <image name="footer-2_30" width="60" height="60"/>
         <image name="footer-3_30" width="60" height="60"/>
-        <image name="footer-4_30" width="60" height="60"/>
+        <image name="footer-4_30" width="58" height="56"/>
         <image name="footer_test" width="36" height="36"/>
         <image name="grayball1" width="363" height="367"/>
         <image name="grayball2" width="363" height="367"/>
