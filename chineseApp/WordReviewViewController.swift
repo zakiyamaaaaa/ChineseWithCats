@@ -13,6 +13,7 @@ import Spring
 class WordReviewViewController: UIViewController {
 
     
+    @IBOutlet weak var bgImageView: SpringImageView!
     @IBOutlet weak var quizNumberLabel: UILabel!
     let voice = AVSpeechSynthesisVoice(language: "zh-CN")
     let synthesizer = AVSpeechSynthesizer()
@@ -34,7 +35,8 @@ class WordReviewViewController: UIViewController {
 //    @IBOutlet weak var resultImageView: UIImageView!
     @IBOutlet weak var nextButton: RoundedRectButton!
     @IBOutlet weak var pinyinLabel: UILabel!
-    @IBOutlet weak var resultImageView: SpringImageView!
+    @IBOutlet weak var incorrectImageView: SpringImageView!
+    @IBOutlet weak var correctImageView: SpringImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +46,8 @@ class WordReviewViewController: UIViewController {
             button.tag = index
         }
 
-        resultImageView.alpha = 0
+        correctImageView.alpha = 0
+        incorrectImageView.alpha = 0
         
         // Do any additional setup after loading the view.
     }
@@ -53,12 +56,20 @@ class WordReviewViewController: UIViewController {
         
         //クイズの順番
         //ここでは順番に設定
-        for i in 0 ..< reviewWords.count{
-            quizList.append(i)
+        quizList = []
+        if UserDefaults.standard.bool(forKey: "purchased") == true || reviewWords.count < 10{
+            for i in 0 ..< reviewWords.count{
+                quizList.append(i)
+            }
+            
+            
+        } else {
+            for i in 0 ..< 10{
+                quizList.append(i)
+            }
         }
-        numberOfQuiz = reviewWords.count
+        numberOfQuiz = quizList.count
         quizStart(reviewWord: reviewWords[quizList.first!])
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -68,6 +79,9 @@ class WordReviewViewController: UIViewController {
     
     func quizStart(reviewWord:LearnHistory){
         //プログラスビューのリセット
+        bgImageView.image = QuizType(rawValue: reviewWord.level)?.bgImage
+        bgImageView.animation = "fadeIn"
+        bgImageView.animate()
         quizNumberLabel.text = "\(numberOfAnswer + 1)/\(numberOfQuiz)"
         timer.invalidate()
         progressView.progress = 1
@@ -200,10 +214,6 @@ class WordReviewViewController: UIViewController {
         //経過時間を止める
         timer.invalidate()
         
-        self.resultImageView.alpha = 1
-        resultImageView.animation = "fadeIn"
-        resultImageView.animate()
-        
         
 //        UIView.animate(withDuration: 1) {
 //            self.resultImageView.transform = CGAffineTransform.init(scaleX: 1.4, y: 1.4)
@@ -236,7 +246,8 @@ class WordReviewViewController: UIViewController {
     //正解したときの挙動
     func correct(){
         AudioPlayer.shared.playSound(AudioPlayer.soundTitle.correct)
-        resultImageView.image = #imageLiteral(resourceName: "good_cat")
+        correctImageView.alpha = 1
+        correctImageView.animation = "fadeIn"
         
         QuizManager.shared.scoreList.append(true)
         scoreList.append(true)
@@ -246,14 +257,12 @@ class WordReviewViewController: UIViewController {
     func fail(){
         AudioPlayer.shared.playSound(AudioPlayer.soundTitle.wrong)
         QuizManager.shared.scoreList.append(false)
-        scoreList.append(false)
-        resultImageView.image = #imageLiteral(resourceName: "bad_cat")
         
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        scoreList.append(false)
+        incorrectImageView.animation = "fadeIn"
+        incorrectImageView.alpha = 1
+        
+        
     }
     
     @IBAction func nextButtonPushed(_ sender: Any) {
@@ -261,11 +270,10 @@ class WordReviewViewController: UIViewController {
         pinyinLabel.isHidden = false
         
         UIView.animate(withDuration: 1) {
-            self.resultImageView.alpha = 0
+            self.correctImageView.alpha = 0
+            self.incorrectImageView.alpha = 0
         }
         
-        
-        self.resultImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
         
         if numberOfAnswer == numberOfQuiz{
             
@@ -294,6 +302,10 @@ class WordReviewViewController: UIViewController {
         answerFinish()
     }
     
+    @IBAction func closeWindow(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @objc func buttonSelected(sender:UIButton){
         if sender.tag == answerOrder{
             correct()
@@ -304,15 +316,5 @@ class WordReviewViewController: UIViewController {
         }
         answerFinish()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

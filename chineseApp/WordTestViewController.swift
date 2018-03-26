@@ -53,7 +53,6 @@ class WordTestViewController: UIViewController{
     var point = 0
     var optionButtonList:[UIButton]!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         unClearVocabrary = WordManger().returnUnclearVocabraty(level: levelNumber, section: sectionNumber)
@@ -117,6 +116,11 @@ class WordTestViewController: UIViewController{
         
         quizStart()
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        timer.invalidate()
+        quizList = []
     }
     
     @IBAction func closeButtonTapped(_ sender: UIButton) {

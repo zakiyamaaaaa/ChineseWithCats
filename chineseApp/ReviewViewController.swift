@@ -60,6 +60,9 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if histryWordList == nil {
+            return
+        }
         let realm = try! Realm()
         histryWordList = realm.objects(LearnHistory.self)
         
@@ -98,6 +101,7 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
             let cell = UITableViewCell()
             cell.textLabel?.text = "機能追加する\n  学習履歴が１０個以上表示されます"
             cell.textLabel?.numberOfLines = 2
+            cell.backgroundColor = UIColor.init(white: 0.9, alpha: 1)
             let textArray = cell.textLabel?.text?.components(separatedBy: "\n")
             let attrText = NSMutableAttributedString(string: cell.textLabel!.text!)
             let supplirange = NSString(string: cell.textLabel!.text!).range(of: textArray![1])
@@ -211,7 +215,15 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
     @IBAction func reviewButtonPushed(_ sender: Any) {
         
         if let list = histryWordList{
-            if list.count > 0{
+            if list.count > 9, UserDefaults.standard.bool(forKey: "purchased") == false {
+                
+            var array:Results<LearnHistory>
+            for (index,word) in list.enumerated() {
+                
+            ScreenTransitionManager.shared.goToReviewQuiz(words: list)
+            }
+                
+            } else if list.count > 0 {
                 ScreenTransitionManager.shared.goToReviewQuiz(words: list)
             }else{
                 let alert = UIAlertController(title: "復習する単語がありません", message: "", preferredStyle: .alert)
@@ -283,11 +295,6 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         
         myTableView.reloadData()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func upgradeButtonPushed(_ sender: Any) {

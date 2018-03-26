@@ -44,7 +44,7 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
     var scrollBeginingPoint: CGPoint!
     var snapAnimator:UIDynamicAnimator!
     var snapBehavior:UISnapBehavior!
-    var buttonPostion:CGPoint!
+    var pinButtonPosition:CGPoint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,16 +54,16 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
         
         pinButton.alpha = pinAlpha
         defaultNavHeight = navViewHeightConstraint.constant
-        buttonPostion = pinButton.center
+        pinButtonPosition = pinButton.center
         
         let dragGesture = UIPanGestureRecognizer(target: self, action: #selector(self.draggedButton(sender:)))
         pinButton.addGestureRecognizer(dragGesture)
+        dragGesture.delegate = self
         // Do any additional setup after loading the view.
     }
     
     
     @objc func draggedButton(sender: UIPanGestureRecognizer) {
-        
         if sender.view!.frame.maxY >= self.view.frame.height - 2 {
             sender.view?.center.y -= 1
             return
@@ -71,9 +71,13 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
         let move = sender.translation(in: view)
         sender.view?.center.x += move.x
         sender.view?.center.y += move.y
-        buttonPostion = sender.view?.center
-        sender.setTranslation(.zero, in: view)
-        
+        pinButtonPosition = sender.view?.center
+        switch sender.state {
+        case .ended:
+            sender.setTranslation(pinButtonPosition, in: view)
+        default:
+            sender.setTranslation(.zero, in: view)
+        }
     }
     
     
@@ -185,6 +189,8 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
         return UITableViewCell()
     }
     
+    
+    
     @objc func speechWord(sender:UIButton){
         guard let words = unClearVocabrary else { return }
         
@@ -264,6 +270,8 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
         myTableView.reloadData()
     }
     
+    
+    
     private func purchase() {
         SwiftyStoreKit.purchaseProduct("com.zakiyamaaaaa.chinesewithcats") { (result) in
             
@@ -319,19 +327,18 @@ extension VocabraryViewController: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         scrollBeginingPoint = scrollView.contentOffset
         print("willbeginddragg:\(scrollView.contentOffset.y)")
+        
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         print("velocity:\(velocity.y)")
         print("willenddragg:\(scrollView.contentOffset.y)")
+        
         yFlag = velocity.y > 0 ? true : false
     }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        
-    }
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
 //        _ = scrollBeginingPoint.y < scrollView.contentOffset.y ? print("下") : print("上")
         if yFlag == true, navViewHeightConstraint.constant > 60, isPin == false {
             navViewHeightConstraint.constant -= 2
@@ -342,4 +349,22 @@ extension VocabraryViewController: UIScrollViewDelegate {
         }
     }
     
+}
+
+extension VocabraryViewController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return false
+//    }
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view != gestureRecognizer.view {
+            return false
+        }else {
+            return true
+        }
+    }
 }

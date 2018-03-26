@@ -34,7 +34,7 @@ class ReviewResultViewController: UIViewController,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return quizList2.count
+        return scoreList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,6 +44,7 @@ class ReviewResultViewController: UIViewController,UITableViewDataSource{
         cell.secondLabel.text = words.word
         
         cell.resultImageView.image = scoreList[indexPath.row] ? #imageLiteral(resourceName: "correctIcon") : #imageLiteral(resourceName: "incorrectIcon")
+        
         
         return cell
     }

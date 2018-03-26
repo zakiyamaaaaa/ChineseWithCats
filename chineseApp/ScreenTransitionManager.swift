@@ -49,13 +49,14 @@ class ScreenTransitionManager{
         showTranslucenceView(controller)
     }
     
-    func goToQuiz(section:Int, level:Int){
+    func goToQuiz(section:Int, level:Int, numberOfQuiz: Int = 5){
         let storyboard = UIStoryboard(name: "WordTest", bundle: nil)
         let controller = storyboard.instantiateInitialViewController() as! WordTestViewController
         controller.sectionNumber = section
         controller.levelNumber = level
         QuizManager.shared.sectionNumber = section
         QuizManager.shared.level = level
+        controller.numberOfQuiz = numberOfQuiz
         
         show(controller)
     }
