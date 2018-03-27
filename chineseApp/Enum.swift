@@ -23,7 +23,7 @@ enum QuizType: Int {
         case .level2:
             return #imageLiteral(resourceName: "hayashi-min")
         case .level3:
-            return #imageLiteral(resourceName: "water-min")
+            return #imageLiteral(resourceName: "fire")
         case .level4:
             return #imageLiteral(resourceName: "forest-min")
         case .level5:
