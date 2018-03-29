@@ -392,7 +392,7 @@ extension UIViewController{
     func verifiReceipt(){
         NetworkActivityIndicatorManager.NetworkOperationStarted()
         let appValidator = AppleReceiptValidator(service: .production)
-        SwiftyStoreKit.verifyReceipt(using: appValidator, password: IAPService.shared.secret) { (result) in
+        SwiftyStoreKit.verifyReceipt(using: appValidator, forceRefresh: true) { (result) in
             NetworkActivityIndicatorManager.networkOperationFinished()
             
             self.showAlert(self.alertForVerifyReceipt(result: result))
@@ -408,7 +408,7 @@ extension UIViewController{
     func verifyPurchase(product:IAPProduct){
         NetworkActivityIndicatorManager.NetworkOperationStarted()
         let appValidator = AppleReceiptValidator(service: .production)
-        SwiftyStoreKit.verifyReceipt(using: appValidator, password: IAPService.shared.secret, forceRefresh: true) { (result) in
+        SwiftyStoreKit.verifyReceipt(using: appValidator, forceRefresh: true) { (result) in
             NetworkActivityIndicatorManager.networkOperationFinished()
             
             switch result{
@@ -527,16 +527,6 @@ extension UIViewController{
             return alertWithTitle("Product is purchased", message: "Product will not expire")
         case .notPurchased:
             return alertWithTitle("Product is not purchased", message: "Product has never been purchased")
-        }
-    }
-    
-    func alertForRefreshReciept(result:RefreshReceiptResult)->UIAlertController{
-        switch result {
-        case .success(let receiptDate):
-            return alertWithTitle("Receipt Refreched", message: "Receipt refreshed successfully:\(receiptDate.description)")
-            
-        case .error(let error):
-            return alertWithTitle("Receive refresh failed", message: "Receipt refresh failed:Error\(error.localizedDescription)")
         }
     }
     
