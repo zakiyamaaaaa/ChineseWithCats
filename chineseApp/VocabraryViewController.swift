@@ -36,6 +36,8 @@ class VocabraryViewController: UIViewController,UITableViewDelegate,UITableViewD
     var yFlag = true
     @IBOutlet weak var wordSegment: UISegmentedControl!
     
+    @IBOutlet weak var navBarView: UIView!
+    @IBOutlet weak var navTitleLabel: UILabel!
     var unClearVocabrary:Results<WordObj>?
     var clearVocabrary:Results<WordObj>?
     var vocabrary:Results<WordObj>?
@@ -342,10 +344,18 @@ extension VocabraryViewController: UIScrollViewDelegate {
 //        _ = scrollBeginingPoint.y < scrollView.contentOffset.y ? print("下") : print("上")
         if yFlag == true, navViewHeightConstraint.constant > 60, isPin == false {
             navViewHeightConstraint.constant -= 2
+        } else if yFlag == true, navViewHeightConstraint.constant == 60 {
+            UIView.animate(withDuration: 1, animations: {
+                self.navTitleLabel.textColor = UIColor.white
+                self.navBarView.backgroundColor = UIColor.mainColor()
+            })
+            
         }
         
         if yFlag == false, navViewHeightConstraint.constant < defaultNavHeight , isPin == false{
             navViewHeightConstraint.constant += 2
+            self.navTitleLabel.textColor = UIColor.mainColor()
+            self.navBarView.backgroundColor = UIColor.white
         }
     }
     

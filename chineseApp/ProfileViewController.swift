@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var section1AchievementLabel: UILabel!
     @IBOutlet weak var section2AchievementLabel: UILabel!
@@ -30,20 +30,38 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var userStateLabel: UILabel!
     var user = UserManager()
+    var wordM:WordManger = WordManger()
+    var snapAnimator:UIDynamicAnimator!
+    var snapBehavior:UISnapBehavior!
+    @IBOutlet weak var profileView: RoundedRectView!
+    var profileViewPosition: CGPoint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        profileImageView.layer.cornerRadius = profileImageView.frame.width/2
+        profileImageView.layer.masksToBounds = true
+        profileImageView.layer.borderColor = UIColor.mainColor().cgColor
+        profileImageView.layer.borderWidth = 3
+        
+        let dragGesture = UIPanGestureRecognizer(target: self, action: #selector(self.draggedButton(sender:)))
+        profileView.addGestureRecognizer(dragGesture)
+        dragGesture.delegate = self
+        
+        UIView.animate(withDuration: 1, delay: 0.5, usingSpringWithDamping: 0.4, initialSpringVelocity: 10, options: .curveEaseOut, animations: {
+            self.profileView.center.y -= 40
+        }, completion: {(bool) in
+            self.profileViewPosition = self.profileView.center
+        })
     }
-    var wordM:WordManger = WordManger()
+    
     override func viewWillAppear(_ animated: Bool) {
-        section1AchievementLabel.text = String(wordM.sectionAchievment(section: 0)) + "%"
-        section2AchievementLabel.text = String(wordM.sectionAchievment(section: 1)) + "%"
-        section3AchievementLabel.text = String(wordM.sectionAchievment(section: 2)) + "%"
-        section4AchievementLabel.text = String(wordM.sectionAchievment(section: 3)) + "%"
-        section5AchievementLabel.text = String(wordM.sectionAchievment(section: 4)) + "%"
-        section6AchievementLabel.text = String(wordM.sectionAchievment(section: 5)) + "%"
+        section1AchievementLabel.text = wordM.sectionAchievment(section: 0).description + "%"
+        section2AchievementLabel.text = wordM.sectionAchievment(section: 1).description + "%"
+        section3AchievementLabel.text = wordM.sectionAchievment(section: 2).description + "%"
+        section4AchievementLabel.text = wordM.sectionAchievment(section: 3).description + "%"
+        section5AchievementLabel.text = wordM.sectionAchievment(section: 4).description + "%"
+        section6AchievementLabel.text = wordM.sectionAchievment(section: 5).description + "%"
         
         if wordM.sectionAchievment(section: 0) == 100{
             section1AchievementLabel.text = ""
@@ -72,8 +90,27 @@ class ProfileViewController: UIViewController {
         
         profileImageView.image = user.userImage
         userStateLabel.text = user.userClass
-        levelLabel.text = "\(user.level)"
+        levelLabel.text = user.level.description
         
+        
+        
+    }
+    
+    @objc func draggedButton(sender: UIPanGestureRecognizer) {
+        
+        let move = sender.translation(in: view)
+        sender.view?.center.x += move.x
+        sender.view?.center.y += move.y
+        
+        switch sender.state {
+        case .ended:
+            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 10, options: .curveEaseOut, animations: {
+                sender.view?.center = self.profileViewPosition
+            }, completion: nil)
+        default:
+            break
+        }
+        sender.setTranslation(.zero, in: view)
     }
     
     @IBAction func resetButtonPushed(_ sender: Any) {

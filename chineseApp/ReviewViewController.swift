@@ -225,15 +225,15 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
                 
             } else if list.count > 0 {
                 ScreenTransitionManager.shared.goToReviewQuiz(words: list)
-            }else{
-                let alert = UIAlertController(title: "復習する単語がありません", message: "", preferredStyle: .alert)
-                self.present(alert, animated: true, completion: { 
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: { 
-//                        self.dismiss(animated: true, completion: nil)
-                        alert.dismiss(animated: true, completion: nil)
-                    })
-                })
             }
+        } else {
+            let alert = UIAlertController(title: "復習する単語がありません", message: "", preferredStyle: .alert)
+            self.present(alert, animated: true, completion: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                    //                        self.dismiss(animated: true, completion: nil)
+                    alert.dismiss(animated: true, completion: nil)
+                })
+            })
         }
     }
     
@@ -299,7 +299,7 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     @IBAction func upgradeButtonPushed(_ sender: Any) {
         
-            }
+    }
     
     private func purchase() {
         SwiftyStoreKit.purchaseProduct("com.zakiyamaaaaa.chinesewithcats") { (result) in

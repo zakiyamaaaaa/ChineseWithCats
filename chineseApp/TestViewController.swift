@@ -12,6 +12,7 @@ class TestViewController: UIViewController {
 
     @IBOutlet weak var progressView: UIProgressView!
     var value = 150
+    var flag = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,7 @@ class TestViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    var flag = false
+    
     @IBAction func up(_ sender: Any) {
         let oldValue = value%100
         let newValue = oldValue + 20
