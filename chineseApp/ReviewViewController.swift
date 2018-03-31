@@ -14,11 +14,11 @@ import AVFoundation
 class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
     enum DateType: Int {
-        case today
-        case yesterday
-        case threeDays
-        case aweek
-        case amounth
+        case today = 0
+        case yesterday = 1
+        case threeDays = 3
+        case aweek = 7
+        case amounth = 30
         
         var image: UIImage {
             switch self {
@@ -60,19 +60,11 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if histryWordList == nil {
-            return
-        }
-        let realm = try! Realm()
-        histryWordList = realm.objects(LearnHistory.self)
         
-        let ud = UserDefaults.standard
-        if ud.bool(forKey: "purchased") == true{
-            upgradeView.isHidden = true
-        }else{
-            let price = StoreKitManager.shared.price
-            upgradeButton.setTitle("アップグレードする(\(price))", for: .normal)
-        }
+        let realm = try! Realm()
+        
+        histryWordList = realm.objects(LearnHistory.self)
+        myTableView.reloadData()
         
     }
     
@@ -84,7 +76,7 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
 
         if isPurchased == true && wordCount > 9 {
             return histryWordList?.count ?? 0
-        } else if isPurchased == false && wordCount > 10 {
+        } else if isPurchased == false && wordCount > 9 {
             return 9 + 1
         } else {
             return wordCount + 1
@@ -94,10 +86,9 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myTableView.dequeueReusableCell(withIdentifier: "reviewCell") as! ReviewWordTableViewCell
         
-        guard let wordList = histryWordList else { return cell }
+        guard let wordList = histryWordList, wordList.count != 0 else { return UITableViewCell() }
         
-        guard let word = histryWordList?[indexPath.row] else { return  cell}
-        if UserDefaults.standard.bool(forKey: "purchased") == false && (indexPath.row == wordList.count + 1 || indexPath.row == 9){
+        if UserDefaults.standard.bool(forKey: "purchased") == false && (indexPath.row == wordList.count || indexPath.row == 9){
             let cell = UITableViewCell()
             cell.textLabel?.text = "機能追加する\n  学習履歴が１０個以上表示されます"
             cell.textLabel?.numberOfLines = 2
@@ -112,6 +103,7 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
             
             return cell
         }
+        guard let word = histryWordList?[indexPath.row] else { return  cell}
         cell.soundButton.addTarget(self, action: #selector(self.speechWord(sender:)), for: .touchUpInside)
         cell.levelLabel.text = QuizType(rawValue: word.level)!.typeTitle + "タイプ" 
         cell.soundButton.tag = indexPath.row
@@ -119,9 +111,14 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
         cell.pinyinLabel.text = word.pinyin
         cell.sentenseLabel.text = word.sentence
         if let difference = calculateDate(time: word.date).day{
-//            cell.dateLabel.text = String(describing: difference) + "日前"
+            cell.dateLabel.text = difference.description + "日前"
+            cell.dateLabel.isHidden = false
             
-            cell.dateImageView.image = DateType(rawValue: difference)!.image
+            cell.dateImageView.image = DateType(rawValue: difference)?.image
+            
+            if cell.dateImageView.image != nil {
+                cell.dateLabel.isHidden = true
+            }
         }
         
         cell.resultImageView.image = word.result ? #imageLiteral(resourceName: "correctIcon") : #imageLiteral(resourceName: "incorrectIcon")
@@ -145,7 +142,7 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let words = histryWordList else { return }
+        guard let words = histryWordList, words.count != 0 else { return }
         
         if indexPath.row == words.count || (UserDefaults.standard.bool(forKey: "purchased") == false && indexPath.row == 9 ){
             // 課金画面
@@ -215,22 +212,12 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
     @IBAction func reviewButtonPushed(_ sender: Any) {
         
         if let list = histryWordList{
-            if list.count > 9, UserDefaults.standard.bool(forKey: "purchased") == false {
-                
-            var array:Results<LearnHistory>
-            for (index,word) in list.enumerated() {
-                
-            ScreenTransitionManager.shared.goToReviewQuiz(words: list)
-            }
-                
-            } else if list.count > 0 {
                 ScreenTransitionManager.shared.goToReviewQuiz(words: list)
-            }
         } else {
             let alert = UIAlertController(title: "復習する単語がありません", message: "", preferredStyle: .alert)
             self.present(alert, animated: true, completion: {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                    //                        self.dismiss(animated: true, completion: nil)
+                    
                     alert.dismiss(animated: true, completion: nil)
                 })
             })
@@ -396,12 +383,6 @@ extension UIViewController{
             NetworkActivityIndicatorManager.networkOperationFinished()
             
             self.showAlert(self.alertForVerifyReceipt(result: result))
-            
-//            if case .error(let error) = result{
-//                if case  = error{
-//
-//                }
-//            }
         }
     }
     
@@ -555,5 +536,24 @@ extension ReviewViewController: UIScrollViewDelegate {
         }
     }
     
+}
+
+extension ReviewViewController {
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        
+//        if editingStyle == .delete {
+//            let realm = try! Realm()
+//            
+//            if let word = histryWordList?[indexPath.row] {
+//                try! realm.write {
+//                    realm.delete(word)
+//                    histryWordList = realm.objects(LearnHistory.self)
+//                }
+//            }
+//            
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//            tableView.reloadData()
+//        }
+//    }
 }
 

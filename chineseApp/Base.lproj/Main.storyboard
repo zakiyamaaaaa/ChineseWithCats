@@ -999,6 +999,12 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAa-sg-iMg">
+                                                    <rect key="frame" x="259" y="25" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDL-Wh-1GU">
                                                     <rect key="frame" x="210" y="28.5" width="30" height="30"/>
                                                     <constraints>
@@ -1022,8 +1028,10 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="6E3-fW-EIL" firstAttribute="centerY" secondItem="FAa-sg-iMg" secondAttribute="centerY" id="4lP-OW-5Tv"/>
                                                 <constraint firstItem="88r-tw-F86" firstAttribute="top" secondItem="6E3-fW-EIL" secondAttribute="bottom" constant="3" id="7IJ-19-Zdr"/>
                                                 <constraint firstItem="XDL-Wh-1GU" firstAttribute="centerY" secondItem="fII-0h-wEy" secondAttribute="centerY" id="P1o-oO-KIQ"/>
+                                                <constraint firstItem="6E3-fW-EIL" firstAttribute="centerX" secondItem="FAa-sg-iMg" secondAttribute="centerX" id="RbS-ez-0Uj"/>
                                                 <constraint firstItem="8gt-aY-utx" firstAttribute="top" secondItem="1vB-j3-Dwj" secondAttribute="top" id="SEp-BH-Kaa"/>
                                                 <constraint firstItem="6E3-fW-EIL" firstAttribute="leading" secondItem="XDL-Wh-1GU" secondAttribute="trailing" constant="15" id="SUq-gn-S2Z"/>
                                                 <constraint firstItem="6E3-fW-EIL" firstAttribute="top" secondItem="fII-0h-wEy" secondAttribute="top" constant="20" id="YqV-bc-RbN"/>
@@ -1036,6 +1044,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateImageView" destination="6E3-fW-EIL" id="8WE-vY-70g"/>
+                                            <outlet property="dateLabel" destination="FAa-sg-iMg" id="nec-4x-0OB"/>
                                             <outlet property="levelLabel" destination="88r-tw-F86" id="QDx-nI-Ee2"/>
                                             <outlet property="pinyinLabel" destination="uJx-Ta-pPQ" id="1N9-MB-4Jb"/>
                                             <outlet property="resultImageView" destination="1vB-j3-Dwj" id="0K7-DP-v7x"/>
